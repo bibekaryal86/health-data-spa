@@ -43,7 +43,7 @@ const ModalHeader = styled.div.attrs({
 })`
   padding: 1rem;
   font-weight: bold;
-  background: lightblue;
+  background: darkseagreen;
   display: flex;
   justify-content: space-between;
 `
@@ -123,7 +123,7 @@ const Modal = (props: ModalProps): React.ReactPortal | null => {
             <Button
               id={'modal-primary-button'}
               title={props.primaryButton}
-              color="green"
+              color="blue"
               onClick={props.primaryButtonAction}
             />
           </ModalFooter>

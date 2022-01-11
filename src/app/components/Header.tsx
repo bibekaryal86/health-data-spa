@@ -22,7 +22,7 @@ const StyledNav = styled.nav.attrs({
   color: whitesmoke;
 
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : 'normal')};
-  background: ${(props) => (props.background ? props.background : 'mediumseagreen')};
+  background: ${(props) => (props.background ? props.background : 'mediumslateblue')};
   justify-content: ${(props) => (props.justifycontent ? props.justifycontent : 'center')};
 
   @media (max-width: 786px) {
@@ -45,11 +45,11 @@ const StyledNavLink = styled(NavLink)<StyledNavProps>`
 
 const StyledNavLinkDropdown = styled(StyledNavLink)`
   margin: 0px;
-  background: mediumseagreen;
+  background: mediumslateblue;
   display: block;
   text-align: left;
   &:hover {
-    background-color: darkseagreen;
+    background-color: darkslateblue;
   }
 `
 
@@ -113,7 +113,7 @@ const Header = (): React.ReactElement => {
 
 const HeaderLinks = ({ displayName = '' }): React.ReactElement => {
   return (
-    <StyledNav justifycontent={displayName.trim() ? 'space-between' : ''} background="seagreen" fontWeight="bold">
+    <StyledNav justifycontent={displayName.trim() ? 'space-between' : ''} background="slateblue" fontWeight="bold">
       Health Data SPA
       {displayName.trim() ? (
         <>

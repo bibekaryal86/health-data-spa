@@ -10,7 +10,7 @@ const InputWrapper = styled.div.attrs({ className: 'input-wrapper' })<{
 }>`
   ${FormLabel} {
     ${({ focus, required }) => css`
-      color: ${required ? '#e60000' : focus ? 'deepskyblue' : ''};
+      color: ${required ? '#e60000' : focus ? 'mediumseagreen' : ''};
     `}
   }
 

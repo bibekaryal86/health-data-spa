@@ -13,7 +13,7 @@ const SelectWrapper = styled.div.attrs({ className: 'select-wrapper' })<{
 
   ${FormLabel} {
     ${({ focus, required }) => css`
-      color: ${required ? '#e60000' : focus ? 'deepskyblue' : ''};
+      color: ${required ? '#e60000' : focus ? 'mediumseagreen' : ''};
     `}
   }
 `

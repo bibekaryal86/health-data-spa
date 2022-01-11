@@ -16,7 +16,7 @@ const RadioButtonWrapper = styled.div.attrs({
 
   ${FormLabel} {
     ${({ focus, required }) => css`
-      color: ${required ? '#e60000' : focus ? 'deepskyblue' : ''};
+      color: ${required ? '#e60000' : focus ? 'mediumseagreen' : ''};
     `}
   }
 
