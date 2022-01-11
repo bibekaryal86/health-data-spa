@@ -45,7 +45,7 @@ module.exports = (env) => {
         directory: path.resolve(__dirname, 'build'),
       },
       historyApiFallback: true,
-      port: 1000,
+      port: 6006,
       open: false,
       hot: true,
       https: false,
@@ -75,7 +75,7 @@ module.exports = (env) => {
         path: './variables.env.dev',
       }),
       new webpack.EnvironmentPlugin({
-        BASE_URL: env.base_url || 'http://localhost:1000',
+        BASE_URL: env.base_url || 'https://gatewayauth.azurewebsites.net',
       }),
     ],
   }

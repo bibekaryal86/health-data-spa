@@ -62,7 +62,7 @@ module.exports = (env) => {
         path: './variables.env.prod',
       }),
       new webpack.EnvironmentPlugin({
-        BASE_URL: env.base_url || 'https://www.prod-url.com',
+        BASE_URL: env.base_url || 'https://gatewayauth.azurewebsites.net',
       }),
     ],
   }
