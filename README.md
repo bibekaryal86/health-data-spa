@@ -15,4 +15,5 @@ connecting directly to GitHub. The only configuration required is the `amplify.y
 this is optional and needed only to override the build settings provided by default in the Amplify page.
 
 The app is deployed at:
-* AWS Amplify: URL-LINK-HERE
+
+* AWS Amplify: https://healthdataspa.d198oknqaokx62.amplifyapp.com/
