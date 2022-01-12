@@ -2,7 +2,7 @@ name: NodeJS with Webpack
 
 on:
   push:
-    branches: [ main, healthdataspa ]
+    branches: [ main, healthdataspa, initial-branch ]
   pull_request:
     branches: [ main, healthdataspa ]
 
@@ -28,6 +28,6 @@ jobs:
       - name: Lint
         run: npm run lint
       - name: Test
-        run: npm test
+        run: npm test -- --reporters=default
       - name: Prod Check
         run: npx webpack --config webpack.prod.config.js
