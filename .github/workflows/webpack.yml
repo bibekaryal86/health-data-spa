@@ -2,7 +2,7 @@ name: NodeJS with Webpack
 
 on:
   push:
-    branches: [ main, healthdataspa, initial-branch ]
+    branches: [ main, healthdataspa ]
   pull_request:
     branches: [ main, healthdataspa ]
 
@@ -23,11 +23,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Build
+      - name: Install
         run: npm install
       - name: Lint
         run: npm run lint
       - name: Test
         run: npm test -- --reporters=default
-      - name: Prod Check
+      - name: Build
         run: npx webpack --config webpack.prod.config.js
