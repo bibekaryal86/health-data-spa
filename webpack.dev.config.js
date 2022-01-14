@@ -75,7 +75,7 @@ module.exports = (env) => {
         path: './variables.env.all',
       }),
       new webpack.EnvironmentPlugin({
-        BASE_URL: env.base_url || 'https://gatewayauth.azurewebsites.net',
+        BASE_URL: env.base_url || 'https://healthdatajava.appspot.com',
       }),
     ],
   }
