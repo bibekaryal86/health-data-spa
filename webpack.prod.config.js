@@ -59,7 +59,7 @@ module.exports = (env) => {
       }),
       new CleanWebpackPlugin(),
       new DotenvPlugin({
-        path: './variables.env.prod',
+        path: './variables.env.all',
       }),
       new webpack.EnvironmentPlugin({
         BASE_URL: env.base_url || 'https://gatewayauth.azurewebsites.net',

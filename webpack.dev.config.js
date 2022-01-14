@@ -72,7 +72,7 @@ module.exports = (env) => {
         extensions: ['js', 'ts', 'tsx'],
       }),
       new DotenvPlugin({
-        path: './variables.env.dev',
+        path: './variables.env.all',
       }),
       new webpack.EnvironmentPlugin({
         BASE_URL: env.base_url || 'https://gatewayauth.azurewebsites.net',
