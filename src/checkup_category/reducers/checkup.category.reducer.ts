@@ -49,6 +49,6 @@ export default function checkupCategoryReducer(
     case CHECKUP_CATEGORY_UNMOUNT:
       return DefaultCheckupCategoryState
     default:
-      return state
+      return DefaultCheckupCategoryState
   }
 }
