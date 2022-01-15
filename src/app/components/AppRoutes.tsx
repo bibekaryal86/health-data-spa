@@ -68,16 +68,19 @@ export const protectedRoutes = [
     subroutes: [
       {
         path: '',
+        display: '',
         element: <Home />,
       },
     ],
     submenus: [
       {
         path: '',
+        display: '',
         element: <Home />,
         subroutes: [
           {
             path: '',
+            display: '',
             element: <Home />,
           },
         ],

@@ -6,7 +6,7 @@ import {
   checkupCategoriesFindSuccess,
   checkupCategoriesRequest,
 } from '../utils/checkup.category.utils'
-import { CheckupCategory, CheckupCategoryResponse } from '../types/checkup.category.data.types'
+import { CheckupCategoryType, CheckupCategoryResponse } from '../types/checkup.category.data.types'
 import { Async, getEndpoint } from '../../common'
 import { CHECKUP_CATEGORY_FIND_FAILURE, CHECKUP_CATEGORY_FIND_REQUEST } from '../types/checkup.category.action.types'
 import { MSG_KEY_CHECKUP_CATEGORY_FIND_ERROR } from '../../constants'
@@ -17,7 +17,7 @@ export const checkupCategoryFindAction = (isFetchCall?: boolean) => {
 
     try {
       let checkupCategoryResponse: Partial<CheckupCategoryResponse>
-      const checkupCategoryInStore: CheckupCategory[] = getStore().checkupCategory?.checkupCategoryList || []
+      const checkupCategoryInStore: CheckupCategoryType[] = getStore().checkupCategory?.checkupCategoryList || []
 
       if (checkupCategoryInStore.length == 0 || isFetchCall) {
         const endpoint = getEndpoint(process.env.CATEGORY_FIND as string)

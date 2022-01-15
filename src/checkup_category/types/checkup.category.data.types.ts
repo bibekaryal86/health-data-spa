@@ -1,30 +1,30 @@
-export interface CheckupCategory {
+export interface CheckupCategoryType {
   id: string
   categoryName: string
 }
 
 export interface CheckupCategoryRequest {
   id: string
-  checkupCategory: CheckupCategory
+  checkupCategory: CheckupCategoryType
 }
 
 export interface CheckupCategoryResponse {
   errMsg: string
   modifiedCount: number
-  checkupCategoryList: CheckupCategory[]
+  checkupCategoryList: CheckupCategoryType[]
 }
 
 export interface CheckupCategoryState {
   errMsg: string
   success: string
-  checkupCategoryList: CheckupCategory[]
+  checkupCategoryList: CheckupCategoryType[]
 }
 
 export interface CheckupCategoryAction extends CheckupCategoryState {
   type: string
 }
 
-export const DefaultCheckupCategory: CheckupCategory = {
+export const DefaultCheckupCategory: CheckupCategoryType = {
   id: '',
   categoryName: '',
 }

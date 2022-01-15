@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import { CheckupCategory } from '../types/checkup.category.data.types'
+import { CheckupCategoryType } from '../types/checkup.category.data.types'
 import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
 import { DisplayCardWrapperBody } from '../../styles'
 
 interface CheckupCategoryProps {
   errMsg: string
   success: string
-  checkupCategoryList: CheckupCategory[]
+  checkupCategoryList: CheckupCategoryType[]
   setAlert: (type: string, messageKey: string) => void
   resetAlert: () => void
   checkupCategoryReset: () => void

@@ -1,5 +1,5 @@
 import React from 'react'
-import { CheckupCategory } from '../types/checkup.category.data.types'
+import { CheckupCategoryType } from '../types/checkup.category.data.types'
 import {
   CHECKUP_CATEGORY_COMPLETE,
   CHECKUP_CATEGORY_FIND_SUCCESS,
@@ -31,7 +31,7 @@ export const checkupCategoriesFailure = (type: string, errMsg: string) => ({
   errMsg,
 })
 
-export const checkupCategoriesFindSuccess = (checkupCategoryList: CheckupCategory[]) => ({
+export const checkupCategoriesFindSuccess = (checkupCategoryList: CheckupCategoryType[]) => ({
   type: CHECKUP_CATEGORY_FIND_SUCCESS,
   checkupCategoryList,
 })
