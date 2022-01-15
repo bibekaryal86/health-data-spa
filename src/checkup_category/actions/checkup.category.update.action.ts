@@ -10,9 +10,9 @@ import {
 import { CheckupCategoryRequest, CheckupCategoryResponse } from '../types/checkup.category.data.types'
 import { Async, FetchOptions, getEndpoint } from '../../common'
 import {
-  CHECKUP_CATEGORY_INSERT_SUCCESS,
   CHECKUP_CATEGORY_UPDATE_FAILURE,
   CHECKUP_CATEGORY_UPDATE_REQUEST,
+  CHECKUP_CATEGORY_UPDATE_SUCCESS,
 } from '../types/checkup.category.action.types'
 import {
   MSG_KEY_CHECKUP_CATEGORY_INVALID,
@@ -43,7 +43,7 @@ export const checkupCategoryUpdateAction = (id: string, categoryName: string) =>
         if (checkupCategoryResponse?.errMsg?.length) {
           dispatch(checkupCategoriesFailure(CHECKUP_CATEGORY_UPDATE_FAILURE, checkupCategoryResponse.errMsg))
         } else {
-          dispatch(checkupCategoriesSuccess(CHECKUP_CATEGORY_INSERT_SUCCESS, MSG_KEY_CHECKUP_CATEGORY_UPDATE_SUCCESS))
+          dispatch(checkupCategoriesSuccess(CHECKUP_CATEGORY_UPDATE_SUCCESS, MSG_KEY_CHECKUP_CATEGORY_UPDATE_SUCCESS))
         }
       } else {
         dispatch(checkupCategoriesFailure(CHECKUP_CATEGORY_UPDATE_FAILURE, MSG_KEY_CHECKUP_CATEGORY_INVALID))

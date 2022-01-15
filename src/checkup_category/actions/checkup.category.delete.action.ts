@@ -10,14 +10,14 @@ import { CheckupCategoryResponse } from '../types/checkup.category.data.types'
 import { Async, FetchOptions, getEndpoint } from '../../common'
 import {
   CHECKUP_CATEGORY_DELETE_FAILURE,
+  CHECKUP_CATEGORY_DELETE_REQUEST,
   CHECKUP_CATEGORY_DELETE_SUCCESS,
-  CHECKUP_CATEGORY_UPDATE_REQUEST,
 } from '../types/checkup.category.action.types'
 import { MSG_KEY_CHECKUP_CATEGORY_DELETE_ERROR, MSG_KEY_CHECKUP_CATEGORY_DELETE_SUCCESS } from '../../constants'
 
 export const checkupCategoryDeleteAction = (id: string) => {
   return async (dispatch: React.Dispatch<GlobalDispatch>): Promise<void> => {
-    dispatch(checkupCategoriesRequest(CHECKUP_CATEGORY_UPDATE_REQUEST))
+    dispatch(checkupCategoriesRequest(CHECKUP_CATEGORY_DELETE_REQUEST))
 
     try {
       const endpoint = getEndpoint(process.env.CATEGORY_DELETE as string)
