@@ -20,6 +20,10 @@ export interface CheckupCategoryState {
   checkupCategoryList: CheckupCategory[]
 }
 
+export interface CheckupCategoryAction extends CheckupCategoryState {
+  type: string
+}
+
 export const DefaultCheckupCategory: CheckupCategory = {
   id: '',
   categoryName: '',
