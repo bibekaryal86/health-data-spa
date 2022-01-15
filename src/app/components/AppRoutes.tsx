@@ -5,6 +5,7 @@ import { Home } from '../../home'
 import NotFound from './NotFound'
 import LogoutContainer from './LogoutContainer'
 import { LocalStorage } from '../../common'
+import { CheckupCategoryContainer } from '../../checkup_category'
 
 const AppRoutes = (): React.ReactElement => {
   return (
@@ -66,23 +67,27 @@ export const protectedRoutes = [
     element: <Home />,
     subroutes: [
       {
-        path: ':id',
+        path: '',
         element: <Home />,
       },
     ],
     submenus: [
       {
-        path: '/home',
-        display: 'Home',
+        path: '',
         element: <Home />,
         subroutes: [
           {
-            path: ':id',
+            path: '',
             element: <Home />,
           },
         ],
       },
     ],
+  },
+  {
+    path: '/checkup_category',
+    display: 'Checkup Category',
+    element: <CheckupCategoryContainer />,
   },
 ]
 
