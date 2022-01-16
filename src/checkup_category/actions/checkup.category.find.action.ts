@@ -16,7 +16,7 @@ export const checkupCategoryFindAction = (isFetchCall?: boolean) => {
     dispatch(checkupCategoriesRequest(CHECKUP_CATEGORY_FIND_REQUEST))
 
     try {
-      let checkupCategoryResponse: Partial<CheckupCategoryResponse>
+      let checkupCategoryResponse: CheckupCategoryResponse
       const checkupCategoryInStore: CheckupCategoryType[] = getStore().checkupCategory?.checkupCategoryList || []
 
       if (checkupCategoryInStore.length == 0 || isFetchCall) {
@@ -24,6 +24,8 @@ export const checkupCategoryFindAction = (isFetchCall?: boolean) => {
         checkupCategoryResponse = (await Async.fetch(endpoint, {})) as CheckupCategoryResponse
       } else {
         checkupCategoryResponse = {
+          errMsg: '',
+          modifiedCount: 0,
           checkupCategoryList: checkupCategoryInStore,
         }
       }
@@ -31,7 +33,7 @@ export const checkupCategoryFindAction = (isFetchCall?: boolean) => {
       if (checkupCategoryResponse?.errMsg?.length) {
         dispatch(checkupCategoriesFailure(CHECKUP_CATEGORY_FIND_FAILURE, checkupCategoryResponse.errMsg))
       } else {
-        const checkupCategoryList = checkupCategoryResponse.checkupCategoryList || []
+        const checkupCategoryList = checkupCategoryResponse.checkupCategoryList
         dispatch(checkupCategoriesFindSuccess(checkupCategoryList))
       }
     } catch (error) {
