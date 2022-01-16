@@ -53,6 +53,6 @@ export default function checkupCategory(
         success: '',
       }
     default:
-      return DefaultCheckupCategoryState
+      return state
   }
 }
