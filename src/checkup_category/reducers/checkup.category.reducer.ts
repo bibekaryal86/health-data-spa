@@ -47,7 +47,11 @@ export default function checkupCategory(
         checkupCategoryList: [], // so that the component with trigger fetch to get updated items
       }
     case CHECKUP_CATEGORY_UNMOUNT:
-      return DefaultCheckupCategoryState
+      return {
+        ...state,
+        errMsg: '',
+        success: '',
+      }
     default:
       return DefaultCheckupCategoryState
   }
