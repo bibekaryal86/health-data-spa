@@ -6,7 +6,7 @@ import reduxImmutableStateInvariant from 'redux-immutable-state-invariant'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { alert, AlertState, spinner, SpinnerState } from '../../common'
 import { USER_LOGOUT } from '../types/login.action.types'
-import { checkupCategoryReducer, CheckupCategoryState } from '../../checkup_category'
+import { checkupCategory, CheckupCategoryState } from '../../checkup_category'
 
 // ACTIONS (ESP: FETCH ACTIONS) SHOULD BE NAMED IN THE FOLLOWING PATTERN:
 // xxx_REQUEST, xxx_SUCCESS, xxx_FAILURE, xxx_COMPLETE
@@ -25,7 +25,7 @@ export interface GlobalDispatch {
 const appReducers = combineReducers({
   alert,
   spinner,
-  checkupCategoryReducer,
+  checkupCategory,
 })
 
 const rootReducer = (state: any, action: any) => {

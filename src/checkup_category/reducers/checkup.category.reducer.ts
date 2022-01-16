@@ -16,8 +16,8 @@ import {
   CHECKUP_CATEGORY_UPDATE_SUCCESS,
 } from '../types/checkup.category.action.types'
 
-export default function checkupCategoryReducer(
-  state: CheckupCategoryState,
+export default function checkupCategory(
+  state = DefaultCheckupCategoryState,
   action: CheckupCategoryAction,
 ): CheckupCategoryState {
   switch (action.type) {

@@ -29,12 +29,6 @@ export const DefaultCheckupCategory: CheckupCategoryType = {
   categoryName: '',
 }
 
-export const DefaultCheckupCategoryResponse: CheckupCategoryResponse = {
-  errMsg: '',
-  modifiedCount: 0,
-  checkupCategoryList: [],
-}
-
 export const DefaultCheckupCategoryState: CheckupCategoryState = {
   errMsg: '',
   success: '',
