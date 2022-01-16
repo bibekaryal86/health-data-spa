@@ -49,7 +49,7 @@ const CheckupCategory = (props: CheckupCategoryProps): React.ReactElement => {
   }, [checkupCategoryReset, resetAlert])
 
   const showBodyHeader = () => (
-    <DisplayCardWrapperBody background="slateblue">
+    <DisplayCardWrapperBody background="slateblue" color="whitesmoke">
       <h4>Checkup Category</h4>
     </DisplayCardWrapperBody>
   )
