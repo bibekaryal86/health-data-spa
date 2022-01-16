@@ -33,8 +33,7 @@ export const checkupCategoryFindAction = (isFetchCall?: boolean) => {
       if (checkupCategoryResponse?.errMsg?.length) {
         dispatch(checkupCategoriesFailure(CHECKUP_CATEGORY_FIND_FAILURE, checkupCategoryResponse.errMsg))
       } else {
-        const checkupCategoryList = checkupCategoryResponse.checkupCategoryList
-        dispatch(checkupCategoriesFindSuccess(checkupCategoryList))
+        dispatch(checkupCategoriesFindSuccess(checkupCategoryResponse.checkupCategoryList))
       }
     } catch (error) {
       console.log('Checkup Categories Find Error', error)
