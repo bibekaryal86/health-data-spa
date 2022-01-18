@@ -1,6 +1,6 @@
 import {
   CheckupComponentAction,
-  CheckupComponentState,
+  CheckupComponentState, DefaultCheckupComponent,
   DefaultCheckupComponentState,
 } from '../types/checkup.component.data.types'
 import {
@@ -55,6 +55,7 @@ export default function checkupComponent(
         ...state,
         errMsg: '',
         success: '',
+        selectedCheckupComponent: DefaultCheckupComponent,
       }
     default:
       return state
