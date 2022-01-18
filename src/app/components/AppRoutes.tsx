@@ -1,12 +1,12 @@
 import React from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import LoginContainer from './LoginContainer'
-import { Home } from '../../home'
 import NotFound from './NotFound'
 import LogoutContainer from './LogoutContainer'
-import { LocalStorage } from '../../common'
-import { CheckupCategoryContainer } from '../../checkup_category'
 import { RoutesType } from '../types/routes.data.types'
+import { LocalStorage } from '../../common'
+import { Home } from '../../home'
+import { CheckupCategoryContainer } from '../../checkup_category'
 import { CheckupComponentContainer, OneCheckupComponentContainer } from '../../checkup_component'
 
 const AppRoutes = (): React.ReactElement => {
