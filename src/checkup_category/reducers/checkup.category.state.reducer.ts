@@ -1,4 +1,8 @@
-import { CheckupCategoryLocalAction, CheckupCategoryLocalState } from '../types/checkup.category.data.types'
+import {
+  CheckupCategoryLocalAction,
+  CheckupCategoryLocalState,
+  DefaultCheckupCategoryLocalState,
+} from '../types/checkup.category.data.types'
 import {
   CHECKUP_CATEGORY_MODAL_CLOSE,
   CHECKUP_CATEGORY_MODAL_DELETE,
@@ -43,13 +47,7 @@ export default function checkupCategoryState(
         categoryNameModalInput: getDefaultString(action.categoryNameModalInput),
       }
     case CHECKUP_CATEGORY_MODAL_CLOSE:
-      return {
-        ...state,
-        isInsertModalOpen: false,
-        isUpdateModalOpen: false,
-        isDeleteModalOpen: false,
-        categoryNameModalInput: '',
-      }
+      return DefaultCheckupCategoryLocalState
     default:
       return state
   }

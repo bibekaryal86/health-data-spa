@@ -98,6 +98,7 @@ const CheckupCategory = (props: CheckupCategoryProps): React.ReactElement => {
         onClick={() => {
           checkupCategoryLocalDispatch(setCheckupCategoriesUpdateModalOpen(true))
           checkupCategoryLocalDispatch(setSelectedCheckupCategory(id, categoryName))
+          checkupCategoryLocalDispatch(setCheckupCategoriesModalInput(categoryName))
         }}
       />
       <Button
@@ -146,9 +147,9 @@ const CheckupCategory = (props: CheckupCategoryProps): React.ReactElement => {
     isDeleteModalOpen
       ? checkupCategoryDeleteAction(selectedCheckupCategoryId)
       : isInsertModalOpen
-      ? checkupCategoryInsertAction(selectedCheckupCategoryName)
+      ? checkupCategoryInsertAction(categoryNameModalInput)
       : isUpdateModalOpen
-      ? checkupCategoryUpdateAction(selectedCheckupCategoryId, selectedCheckupCategoryName)
+      ? checkupCategoryUpdateAction(selectedCheckupCategoryId, categoryNameModalInput)
       : console.log('Do Update Checkup Category Error')
     checkupCategoryLocalDispatch(setCheckupCategoriesModalClose())
   }
