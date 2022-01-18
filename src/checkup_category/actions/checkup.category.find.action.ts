@@ -6,7 +6,7 @@ import {
   checkupCategoriesFindSuccess,
   checkupCategoriesRequest,
 } from '../utils/checkup.category.utils'
-import { CheckupCategoryType, CheckupCategoryResponse } from '../types/checkup.category.data.types'
+import { CheckupCategoryResponse, CheckupCategoryType } from '../types/checkup.category.data.types'
 import { Async, getEndpoint } from '../../common'
 import { CHECKUP_CATEGORY_FIND_FAILURE, CHECKUP_CATEGORY_FIND_REQUEST } from '../types/checkup.category.action.types'
 import { MSG_KEY_CHECKUP_CATEGORY_FIND_ERROR } from '../../constants'

@@ -24,10 +24,17 @@ export interface CheckupCategoryAction extends CheckupCategoryState {
   type: string
 }
 
-export interface MerchantsReducerState {
-  displayCheckupCategoryList: CheckupCategoryType[]
-  checkupCategoryInActionId: string
-  checkupCategoryInActionDesc: string
+export interface CheckupCategoryLocalState {
+  selectedCheckupCategoryId: string
+  selectedCheckupCategoryName: string
+  isInsertModalOpen: boolean
+  isUpdateModalOpen: boolean
+  isDeleteModalOpen: boolean
+  categoryNameModalInput: string
+}
+
+export interface CheckupCategoryLocalAction extends CheckupCategoryLocalState {
+  type: string
 }
 
 export const DefaultCheckupCategory: CheckupCategoryType = {
@@ -41,8 +48,11 @@ export const DefaultCheckupCategoryState: CheckupCategoryState = {
   checkupCategoryList: [],
 }
 
-export const DefaultMerchantsReducerState: MerchantsReducerState = {
-  displayCheckupCategoryList: [],
-  checkupCategoryInActionId: '',
-  checkupCategoryInActionDesc: '',
+export const DefaultCheckupCategoryLocalState: CheckupCategoryLocalState = {
+  selectedCheckupCategoryId: '',
+  selectedCheckupCategoryName: '',
+  isInsertModalOpen: false,
+  isUpdateModalOpen: false,
+  isDeleteModalOpen: false,
+  categoryNameModalInput: '',
 }
