@@ -45,7 +45,7 @@ module.exports = (env) => {
         directory: path.resolve(__dirname, 'build'),
       },
       historyApiFallback: true,
-      port: 1000,
+      port: 6006,
       open: false,
       hot: true,
       https: false,
@@ -72,10 +72,10 @@ module.exports = (env) => {
         extensions: ['js', 'ts', 'tsx'],
       }),
       new DotenvPlugin({
-        path: './variables.env.dev',
+        path: './variables.env.all',
       }),
       new webpack.EnvironmentPlugin({
-        BASE_URL: env.base_url || 'http://localhost:1000',
+        BASE_URL: env.base_url || 'https://gatewayauth.azurewebsites.net',
       }),
     ],
   }

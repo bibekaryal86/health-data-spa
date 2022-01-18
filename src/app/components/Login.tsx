@@ -111,7 +111,7 @@ const Login = (props: SignInProps): React.ReactElement => {
         </form>
       </DisplayCardRow>
       <DisplayCardRow textAlign="center">
-        <Button id={'sign-in-submit'} title="Sign In" onClick={handleSubmit} includeBorder color="green" />
+        <Button id={'sign-in-submit'} title="Sign In" onClick={handleSubmit} includeBorder color="blue" />
         <Button
           id={'sign-in-create'}
           title="Create Account"

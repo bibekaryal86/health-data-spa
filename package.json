@@ -1,7 +1,7 @@
 {
-  "name": "react-spa-skeleton",
+  "name": "health-data-spa",
   "version": "1.0.1",
-  "description": "This is a template repository to create new React Application",
+  "description": "This is a SPA for adding/updating/viewing/deleting personal health related data",
   "private": true,
   "main": "index.js",
   "scripts": {
@@ -12,26 +12,15 @@
     "lint": "eslint src/** --ext .js,.ts,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --config ./jest.config.js --passWithNoTests",
-    "test:u": "npm run test -- -u",
-    "test:watch": "jest --config ./jest.config.js --watch"
+    "test:u": "npm run test -- -u"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bibekaryal86/react-spa-skeleton.git"
+    "url": "git+https://github.com/bibekaryal86/health-data-spa.git"
   },
-  "keywords": [
-    "react",
-    "redux",
-    "typescript",
-    "babel",
-    "webpack",
-    "eslint",
-    "prettier",
-    "jest"
-  ],
   "author": "Bibek Aryal",
   "license": "ISC",
-  "homepage": "https://github.com/bibekaryal86/react-spa-skeleton#readme",
+  "homepage": "https://github.com/bibekaryal86/health-data-spa#readme",
   "dependencies": {
     "moment": "^2.29.1",
     "react": "^17.0.2",

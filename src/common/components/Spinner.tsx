@@ -42,8 +42,8 @@ const SpinnerObject = styled.div.attrs({
   className: 'spinner-object',
 })<SpinnerProps>`
   display: inline-block;
-  border: 20px solid mediumseagreen;
-  border-top: 20px solid seagreen;
+  border: 20px solid mediumslateblue;
+  border-top: 20px solid slateblue;
   border-radius: 50%;
   animation: ${spin} 0.7s linear infinite;
 

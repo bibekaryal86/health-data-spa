@@ -10,7 +10,7 @@ const TextAreaWrapper = styled.div.attrs({ className: 'textArea-wrapper' })<{
 }>`
   ${FormLabel} {
     ${({ focus, required }) => css`
-      color: ${required ? '#e60000' : focus ? 'deepskyblue' : ''};
+      color: ${required ? '#e60000' : focus ? 'mediumseagreen' : ''};
     `}
   }
 

@@ -5,6 +5,8 @@ import { Home } from '../../home'
 import NotFound from './NotFound'
 import LogoutContainer from './LogoutContainer'
 import { LocalStorage } from '../../common'
+import { CheckupCategoryContainer } from '../../checkup_category'
+import { RoutesType } from '../types/routes.data.types'
 
 const AppRoutes = (): React.ReactElement => {
   return (
@@ -44,7 +46,7 @@ function RequireAuth({ children }: { children: React.ReactElement }) {
   return isLoggedIn?.length ? children : <Navigate to="/" replace state={{ redirect: location.pathname }} />
 }
 
-const publicRoutes = [
+const publicRoutes: RoutesType[] = [
   {
     path: '*',
     element: <NotFound />,
@@ -54,35 +56,42 @@ const publicRoutes = [
     element: <LoginContainer />,
   },
   {
-    path: '/signout',
+    path: '/logout',
     element: <LogoutContainer />,
   },
 ]
 
-export const protectedRoutes = [
+export const protectedRoutes: RoutesType[] = [
   {
     path: '/home',
     display: 'Home',
     element: <Home />,
     subroutes: [
       {
-        path: ':id',
+        path: '',
+        display: '',
         element: <Home />,
       },
     ],
     submenus: [
       {
-        path: '/home',
-        display: 'Home',
+        path: '',
+        display: '',
         element: <Home />,
         subroutes: [
           {
-            path: ':id',
+            path: '',
+            display: '',
             element: <Home />,
           },
         ],
       },
     ],
+  },
+  {
+    path: '/checkup_category',
+    display: 'Checkup Category',
+    element: <CheckupCategoryContainer />,
   },
 ]
 

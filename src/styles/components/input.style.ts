@@ -52,7 +52,7 @@ const InputStyle = createGlobalStyle`
   input[type='password']:focus,
   textarea:focus,
   select:focus {
-    border: 2px solid deepskyblue;
+    border: 2px solid mediumseagreen;
     outline: 0;
   }
   input[type='email']:required:focus,
