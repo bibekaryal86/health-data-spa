@@ -7,6 +7,7 @@ import LogoutContainer from './LogoutContainer'
 import { LocalStorage } from '../../common'
 import { CheckupCategoryContainer } from '../../checkup_category'
 import { RoutesType } from '../types/routes.data.types'
+import { CheckupComponentContainer, OneCheckupComponentContainer } from '../../checkup_component'
 
 const AppRoutes = (): React.ReactElement => {
   return (
@@ -71,6 +72,17 @@ export const protectedRoutes: RoutesType[] = [
     path: '/checkup_category',
     display: 'Checkup Category',
     element: <CheckupCategoryContainer />,
+  },
+  {
+    path: '/checkup_component',
+    display: 'Checkup Component',
+    element: <CheckupComponentContainer />,
+    subroutes: [
+      {
+        path: ':id',
+        element: <OneCheckupComponentContainer />,
+      },
+    ],
   },
 ]
 
