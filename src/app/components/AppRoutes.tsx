@@ -66,27 +66,6 @@ export const protectedRoutes: RoutesType[] = [
     path: '/home',
     display: 'Home',
     element: <Home />,
-    subroutes: [
-      {
-        path: '',
-        display: '',
-        element: <Home />,
-      },
-    ],
-    submenus: [
-      {
-        path: '',
-        display: '',
-        element: <Home />,
-        subroutes: [
-          {
-            path: '',
-            display: '',
-            element: <Home />,
-          },
-        ],
-      },
-    ],
   },
   {
     path: '/checkup_category',
