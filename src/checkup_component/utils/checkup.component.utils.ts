@@ -129,4 +129,4 @@ const getUpdatedCheckupComponent = (
 }
 
 const setInputFieldValue = (inputValue: string | undefined, defaultValue = '') =>
-  inputValue === undefined ? defaultValue : inputValue
+  inputValue === undefined ? defaultValue : inputValue.toUpperCase()

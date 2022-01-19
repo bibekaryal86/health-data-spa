@@ -70,7 +70,7 @@ export const setCheckupCategoriesDeleteModalOpen = (isOpen: boolean): Partial<Ch
 
 export const setCheckupCategoriesModalInput = (modalInput: string): Partial<CheckupCategoryLocalAction> => ({
   type: CHECKUP_CATEGORY_MODAL_INPUT,
-  categoryNameModalInput: modalInput,
+  categoryNameModalInput: modalInput.toUpperCase(),
 })
 
 export const setCheckupCategoriesModalClose = (): Partial<CheckupCategoryLocalAction> => ({
