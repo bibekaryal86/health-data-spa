@@ -1,11 +1,15 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { DisplayCardWrapperBody, DisplayCardWrapperRow } from '../../styles'
+import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow } from '../../styles'
 import { CheckupComponentType, DefaultCheckupComponent } from '../types/checkup.component.data.types'
 import checkupComponentDetails from '../reducers/one.checkup.component.reducer'
 import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
-import { HrefLink, Input, InputType, Select } from '../../common'
-import { checkupCategoryOptions, handleCheckupComponentFieldChange } from '../utils/checkup.component.utils'
+import { Button, HrefLink, Input, InputType, Modal, Select } from '../../common'
+import {
+  checkupCategoryOptions,
+  handleCheckupComponentFieldChange,
+  validateCheckupComponent,
+} from '../utils/checkup.component.utils'
 import { CheckupCategoryType } from '../../checkup_category'
 
 interface CheckupComponentDetailsProps {
@@ -25,7 +29,7 @@ interface CheckupComponentDetailsProps {
 
 const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.ReactElement => {
   const [checkupComponentData, setCheckupComponentData] = useReducer(checkupComponentDetails, DefaultCheckupComponent)
-  //const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const { id } = useParams()
   const navigate = useNavigate()
 
@@ -39,9 +43,9 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
     resetAlert,
     checkupComponentReset,
     checkupComponentFindAction,
-    //checkupComponentInsertAction,
-    //checkupComponentUpdateAction,
-    //checkupComponentDeleteAction,
+    checkupComponentInsertAction,
+    checkupComponentUpdateAction,
+    checkupComponentDeleteAction,
   } = props
 
   useEffect(() => {
@@ -66,6 +70,52 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
 
   const showAllCheckupComponents = () => {
     return navigate('/checkup_component')
+  }
+
+  const insertCheckupComponent = () => {
+    const isInvalid = validateCheckupComponent(checkupComponentData)
+    if (isInvalid) {
+      const errMsg = 'Invalid Input! Required field ' + isInvalid + ' not provided!! Please Try Again!!!'
+      setAlert(ALERT_TYPE_FAILURE, errMsg)
+    } else {
+      resetAlert()
+      checkupComponentInsertAction(checkupComponentData)
+      showAllCheckupComponents()
+    }
+  }
+
+  const updateCheckupComponent = () => {
+    const isInvalid = validateCheckupComponent(checkupComponentData)
+    if (isInvalid) {
+      const errMsg = 'Invalid Input! Required field ' + isInvalid + ' not provided!! Please Try Again!!!'
+      setAlert(ALERT_TYPE_FAILURE, errMsg)
+    } else {
+      resetAlert()
+      id && checkupComponentUpdateAction(id, checkupComponentData)
+    }
+  }
+
+  const deleteCheckupComponentBegin = () => setIsDeleteModalOpen(true)
+  const deleteModalBody = () => (
+    <>
+      <p>Are you sure you want to delete the account: {checkupComponentData.componentName}?</p>
+    </>
+  )
+  const deleteModal = () => (
+    <Modal
+      setIsModalOpen={setIsDeleteModalOpen}
+      header="Warning"
+      body={deleteModalBody()}
+      primaryButton="Yes"
+      primaryButtonAction={deleteCheckupComponentEnd}
+      secondaryButton="Cancel"
+      secondaryButtonAction={() => setIsDeleteModalOpen(false)}
+    />
+  )
+  const deleteCheckupComponentEnd = () => {
+    setIsDeleteModalOpen(false)
+    id && checkupComponentDeleteAction(id)
+    showAllCheckupComponents()
   }
 
   const showBodyHeader = () => (
@@ -170,19 +220,86 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
     />
   )
 
+  const isButtonDisabled = () =>
+    selectedCheckupComponent.componentName === checkupComponentData.componentName &&
+    selectedCheckupComponent.checkupCategory.id === checkupComponentData.checkupCategory.id &&
+    selectedCheckupComponent.standardLow === checkupComponentData.standardLow &&
+    selectedCheckupComponent.standardHigh === checkupComponentData.standardHigh &&
+    selectedCheckupComponent.measureUnit === checkupComponentData.measureUnit &&
+    selectedCheckupComponent.componentComments === checkupComponentData.componentComments
+
+  const addButton = () => (
+    <Button
+      id="checkup-component-details-button-add"
+      title="Add Checkup Component"
+      onClick={() => insertCheckupComponent()}
+      includeBorder
+      disabled={isButtonDisabled()}
+    />
+  )
+
+  const updateButton = () => (
+    <Button
+      id="checkup-component-details-button-add"
+      title="Update Checkup Component"
+      onClick={() => updateCheckupComponent()}
+      includeBorder
+      disabled={isButtonDisabled()}
+    />
+  )
+
+  const deleteButton = () => (
+    <Button
+      id="checkup-component-details-button-delete"
+      title="Delete Checkup Component"
+      onClick={() => deleteCheckupComponentBegin()}
+      includeBorder
+    />
+  )
+
+  const revertButton = () => (
+    <Button
+      id="checkup-component-details-button-reset"
+      title="Revert Changes"
+      onClick={() => setCheckupComponentData({ checkupComponent: selectedCheckupComponent })}
+      includeBorder
+      disabled={isButtonDisabled()}
+    />
+  )
+
+  const addButtons = () => (
+    <>
+      {addButton()}
+      {revertButton()}
+    </>
+  )
+
+  const updateButtons = () => (
+    <>
+      {updateButton()}
+      {deleteButton()}
+      {revertButton()}
+    </>
+  )
+
   const showBodyContent = () => (
     <DisplayCardWrapperBody id="checkup-component-body-content" container>
       <DisplayCardWrapperRow container>
-        <div className="six columns">{categorySelect()}</div>
-        <div className="six columns">{componentNameInput()}</div>
+        <DisplayCardWrapperColumn classname="six columns">{categorySelect()}</DisplayCardWrapperColumn>
+        <DisplayCardWrapperColumn classname="six columns">{componentNameInput()}</DisplayCardWrapperColumn>
       </DisplayCardWrapperRow>
       <DisplayCardWrapperRow container>
-        <div className="four columns">{standardLowInput()}</div>
-        <div className="four columns">{standardHighInput()}</div>
-        <div className="four columns">{measureUnitInput()}</div>
+        <DisplayCardWrapperColumn classname="four columns">{standardLowInput()}</DisplayCardWrapperColumn>
+        <DisplayCardWrapperColumn classname="four columns">{standardHighInput()}</DisplayCardWrapperColumn>
+        <DisplayCardWrapperColumn classname="four columns">{measureUnitInput()}</DisplayCardWrapperColumn>
       </DisplayCardWrapperRow>
       <DisplayCardWrapperRow container>
-        <div className="twelve columns">{componentCommentsInput()}</div>
+        <DisplayCardWrapperColumn classname="twelve columns">{componentCommentsInput()}</DisplayCardWrapperColumn>
+      </DisplayCardWrapperRow>
+      <DisplayCardWrapperRow container>
+        <DisplayCardWrapperColumn classname="twelve columns">
+          {id ? updateButtons() : addButtons()}
+        </DisplayCardWrapperColumn>
       </DisplayCardWrapperRow>
     </DisplayCardWrapperBody>
   )
@@ -191,6 +308,7 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
     <>
       {showBodyHeader()}
       {showBodyContent()}
+      {isDeleteModalOpen && deleteModal()}
     </>
   )
 }
