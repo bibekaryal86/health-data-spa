@@ -22,10 +22,20 @@ export const checkupComponentReset = () => {
   }
 }
 
-export const validateCheckupComponent = (checkupComponent: CheckupComponentType): boolean =>
-  checkupComponent &&
-  !!(checkupComponent.componentName && checkupComponent.componentName.trim().length > 2) &&
-  !!(checkupComponent.checkupCategory && checkupComponent.checkupCategory.id)
+// only validate required fields, other validations done in backend
+export const validateCheckupComponent = (checkupComponent: CheckupComponentType): string => {
+  let invalids = ''
+
+  if (!checkupComponent.componentName || checkupComponent.componentName.trim().length < 5) {
+    invalids += ' [Component Name] '
+  }
+
+  if (!checkupComponent.checkupCategory || !checkupComponent.checkupCategory.id) {
+    invalids += ' [Checkup Category] '
+  }
+
+  return invalids
+}
 
 export const checkupComponentsRequest = (type: string) => ({
   type,

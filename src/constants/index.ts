@@ -36,7 +36,6 @@ export const MSG_KEY_CHECKUP_CATEGORY_UPDATE_SUCCESS = 'CATEGORY_UPDATE_SUCCESS'
 export const MSG_KEY_CHECKUP_CATEGORY_DELETE_ERROR = 'CATEGORY_DELETE_ERROR'
 export const MSG_KEY_CHECKUP_CATEGORY_DELETE_SUCCESS = 'CATEGORY_DELETE_SUCCESS'
 
-export const MSG_KEY_CHECKUP_COMPONENT_INVALID = 'COMPONENT_INVALID'
 export const MSG_KEY_CHECKUP_COMPONENT_FIND_ERROR = 'COMPONENT_FIND_ERROR'
 export const MSG_KEY_CHECKUP_COMPONENT_INSERT_ERROR = 'COMPONENT_INSERT_ERROR'
 export const MSG_KEY_CHECKUP_COMPONENT_INSERT_SUCCESS = 'COMPONENT_INSERT_SUCCESS'
@@ -62,10 +61,6 @@ export const ALERT_MESSAGES = new Map([
   [MSG_KEY_CHECKUP_CATEGORY_UPDATE_SUCCESS, 'Checkup Category Update Success!!!'],
   [MSG_KEY_CHECKUP_CATEGORY_DELETE_ERROR, 'Error Deleting Checkup Category! Please Try Again!!!'],
   [MSG_KEY_CHECKUP_CATEGORY_DELETE_SUCCESS, 'Checkup Category Delete Success!!!'],
-  [
-    MSG_KEY_CHECKUP_COMPONENT_INVALID,
-    'Invalid Input! The Component Name (3 Characters or More) and Category Should be Provided!! Please Try Again!!!',
-  ],
   [MSG_KEY_CHECKUP_COMPONENT_FIND_ERROR, 'Error Retrieving Checkup Components! Please Try Again!!!'],
   [MSG_KEY_CHECKUP_COMPONENT_INSERT_ERROR, 'Error Inserting Checkup Component! Please Try Again!!!'],
   [MSG_KEY_CHECKUP_COMPONENT_INSERT_SUCCESS, 'Checkup Component Insert Success!!!'],
