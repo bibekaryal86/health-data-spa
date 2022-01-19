@@ -4,12 +4,8 @@ import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow
 import { CheckupComponentType, DefaultCheckupComponent } from '../types/checkup.component.data.types'
 import checkupComponentDetails from '../reducers/one.checkup.component.reducer'
 import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
-import { Button, HrefLink, Input, InputType, Modal, Select } from '../../common'
-import {
-  checkupCategoryOptions,
-  handleCheckupComponentFieldChange,
-  validateCheckupComponent,
-} from '../utils/checkup.component.utils'
+import { Button, checkupCategoryOptions, HrefLink, Input, InputType, Modal, Select } from '../../common'
+import { handleCheckupComponentFieldChange, validateCheckupComponent } from '../utils/checkup.component.utils'
 import { CheckupCategoryType } from '../../checkup_category'
 
 interface CheckupComponentDetailsProps {

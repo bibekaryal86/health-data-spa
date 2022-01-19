@@ -11,8 +11,6 @@ import {
   CHECKUP_COMPONENT_SELECT_COMPONENT,
   CHECKUP_COMPONENT_UNMOUNT,
 } from '../types/checkup.component.action.types'
-import { CheckupCategoryType } from '../../checkup_category'
-import { SelectOptionProps } from '../../common/forms/Select'
 
 export const checkupComponentReset = () => {
   return async (dispatch: React.Dispatch<GlobalDispatch>): Promise<void> => {
@@ -64,12 +62,6 @@ export const checkupComponentsSelectComponent = (selectedCheckupComponent: Check
   type: CHECKUP_COMPONENT_SELECT_COMPONENT,
   selectedCheckupComponent,
 })
-
-export const checkupCategoryOptions = (checkupCategories: CheckupCategoryType[]): SelectOptionProps[] => {
-  const selectOptions: SelectOptionProps[] = [{ text: 'Please Select', value: '' }]
-  checkupCategories.forEach((category) => selectOptions.push({ text: category.categoryName, value: category.id }))
-  return selectOptions
-}
 
 export const handleCheckupComponentFieldChange = (
   input: string,

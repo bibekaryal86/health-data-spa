@@ -12,7 +12,7 @@ export interface CheckupResultType {
 
 export interface CheckupResultRequest {
   id: string
-  checkupResult: CheckupResultType
+  checkupResult: Partial<CheckupResultType>
 }
 
 export interface CheckupResultResponse {
@@ -42,7 +42,6 @@ export interface CheckupResultUpdate {
   componentId: string
   checkupDate: string
   testResult: string
-  resultFlag: string
 }
 
 export const DefaultCheckupResult: CheckupResultType = {
