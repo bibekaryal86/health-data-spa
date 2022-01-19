@@ -4,9 +4,10 @@ import { applyMiddleware, combineReducers, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { alert, AlertState, spinner, SpinnerState } from '../../common'
 import { USER_LOGOUT } from '../types/login.action.types'
+import { alert, AlertState, spinner, SpinnerState } from '../../common'
 import { checkupCategory, CheckupCategoryState } from '../../checkup_category'
+import { checkupComponent, CheckupComponentState } from '../../checkup_component'
 
 // ACTIONS (ESP: FETCH ACTIONS) SHOULD BE NAMED IN THE FOLLOWING PATTERN:
 // xxx_REQUEST, xxx_SUCCESS, xxx_FAILURE, xxx_COMPLETE
@@ -16,6 +17,7 @@ export interface GlobalState {
   alert: AlertState
   spinner: SpinnerState
   checkupCategory: CheckupCategoryState
+  checkupComponent: CheckupComponentState
 }
 
 export interface GlobalDispatch {
@@ -26,6 +28,7 @@ const appReducers = combineReducers({
   alert,
   spinner,
   checkupCategory,
+  checkupComponent,
 })
 
 const rootReducer = (state: any, action: any) => {

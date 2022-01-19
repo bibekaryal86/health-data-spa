@@ -1,12 +1,13 @@
 import React from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import LoginContainer from './LoginContainer'
-import { Home } from '../../home'
 import NotFound from './NotFound'
 import LogoutContainer from './LogoutContainer'
-import { LocalStorage } from '../../common'
-import { CheckupCategoryContainer } from '../../checkup_category'
 import { RoutesType } from '../types/routes.data.types'
+import { LocalStorage } from '../../common'
+import { Home } from '../../home'
+import { CheckupCategoryContainer } from '../../checkup_category'
+import { CheckupComponentContainer, CheckupComponentDetailsContainer } from '../../checkup_component'
 
 const AppRoutes = (): React.ReactElement => {
   return (
@@ -66,32 +67,32 @@ export const protectedRoutes: RoutesType[] = [
     path: '/home',
     display: 'Home',
     element: <Home />,
-    subroutes: [
-      {
-        path: '',
-        display: '',
-        element: <Home />,
-      },
-    ],
-    submenus: [
-      {
-        path: '',
-        display: '',
-        element: <Home />,
-        subroutes: [
-          {
-            path: '',
-            display: '',
-            element: <Home />,
-          },
-        ],
-      },
-    ],
   },
   {
     path: '/checkup_category',
     display: 'Checkup Category',
     element: <CheckupCategoryContainer />,
+  },
+  {
+    path: '/checkup_component',
+    display: 'Checkup Component',
+    element: <CheckupComponentContainer />,
+    subroutes: [
+      {
+        path: ':id',
+        element: <CheckupComponentDetailsContainer />,
+      },
+    ],
+  },
+  {
+    path: '/checkup_component_selected',
+    element: <CheckupComponentDetailsContainer />,
+    subroutes: [
+      {
+        path: ':id',
+        element: <CheckupComponentDetailsContainer />,
+      },
+    ],
   },
 ]
 

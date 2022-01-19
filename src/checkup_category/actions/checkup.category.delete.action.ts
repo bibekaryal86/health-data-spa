@@ -35,7 +35,7 @@ export const checkupCategoryDeleteAction = (id: string) => {
         dispatch(checkupCategoriesSuccess(CHECKUP_CATEGORY_DELETE_SUCCESS, MSG_KEY_CHECKUP_CATEGORY_DELETE_SUCCESS))
       }
     } catch (error) {
-      console.log('Checkup Category Update Error', error)
+      console.log('Checkup Category Delete Error', error)
       dispatch(checkupCategoriesFailure(CHECKUP_CATEGORY_DELETE_FAILURE, MSG_KEY_CHECKUP_CATEGORY_DELETE_ERROR))
     } finally {
       dispatch(checkupCategoriesComplete())

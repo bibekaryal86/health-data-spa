@@ -1,4 +1,5 @@
 import React from 'react'
+import { GlobalDispatch } from '../../app/store/redux'
 import { CheckupCategoryLocalAction, CheckupCategoryType } from '../types/checkup.category.data.types'
 import {
   CHECKUP_CATEGORY_COMPLETE,
@@ -11,7 +12,6 @@ import {
   CHECKUP_CATEGORY_SELECT_CATEGORY,
   CHECKUP_CATEGORY_UNMOUNT,
 } from '../types/checkup.category.action.types'
-import { GlobalDispatch } from '../../app/store/redux'
 
 export const checkupCategoryReset = () => {
   return async (dispatch: React.Dispatch<GlobalDispatch>): Promise<void> => {
@@ -70,7 +70,7 @@ export const setCheckupCategoriesDeleteModalOpen = (isOpen: boolean): Partial<Ch
 
 export const setCheckupCategoriesModalInput = (modalInput: string): Partial<CheckupCategoryLocalAction> => ({
   type: CHECKUP_CATEGORY_MODAL_INPUT,
-  categoryNameModalInput: modalInput,
+  categoryNameModalInput: modalInput.toUpperCase(),
 })
 
 export const setCheckupCategoriesModalClose = (): Partial<CheckupCategoryLocalAction> => ({
