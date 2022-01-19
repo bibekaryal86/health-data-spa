@@ -22,7 +22,6 @@ interface CheckupComponentDetailsProps {
 
 const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.ReactElement => {
   const [checkupComponentData, setCheckupComponentData] = useReducer(checkupComponentDetails, DefaultCheckupComponent)
-  const [isValidId, setIsValidId] = useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const { id } = useParams()
   const navigate = useNavigate()
@@ -43,18 +42,8 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
 
   console.log(
     checkupComponentData,
-    setCheckupComponentData,
-    isValidId,
-    setIsValidId,
     isDeleteModalOpen,
     setIsDeleteModalOpen,
-    '****************',
-    id,
-    '****************',
-    navigate,
-    checkupComponentList,
-    selectedCheckupComponent,
-    checkupComponentFindAction,
     checkupComponentInsertAction,
     checkupComponentUpdateAction,
     checkupComponentDeleteAction,
@@ -73,16 +62,8 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
   }, [errMsg, setAlert, success])
 
   useEffect(() => {
-    if (Number.isInteger(id)) {
-      setIsValidId(true)
-    } else {
-      setIsValidId(false)
-    }
-  }, [id])
-
-  useEffect(() => {
-    id && isValidId && checkupComponentFindAction(id)
-  }, [checkupComponentFindAction, checkupComponentList, id, isValidId])
+    id && checkupComponentFindAction(id)
+  }, [checkupComponentFindAction, checkupComponentList, id])
 
   useEffect(() => {
     setCheckupComponentData({ checkupComponent: selectedCheckupComponent })
@@ -95,7 +76,7 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
   const showBodyHeader = () => (
     <DisplayCardWrapperBody background="slateblue" color="whitesmoke">
       <HrefLink
-        id="one-checkup-component-all-components-link-1"
+        id="checkup-component-all-components-link-1"
         linkTo="#"
         title="To All Checkup Components List"
         onClick={() => showAllCheckupComponents()}
