@@ -25,6 +25,7 @@ interface CheckupComponentDetailsProps {
   checkupComponentInsertAction: (checkupComponent: CheckupComponentType) => void
   checkupComponentUpdateAction: (id: string, checkupComponent: CheckupComponentType) => void
   checkupComponentDeleteAction: (selectedId: string) => void
+  checkupCategoryFindAction: () => void
 }
 
 const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.ReactElement => {
@@ -46,6 +47,7 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
     checkupComponentInsertAction,
     checkupComponentUpdateAction,
     checkupComponentDeleteAction,
+    checkupCategoryFindAction,
   } = props
 
   useEffect(() => {
@@ -63,6 +65,10 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
   useEffect(() => {
     id && checkupComponentFindAction(id)
   }, [checkupComponentFindAction, checkupComponentList, id])
+
+  useEffect(() => {
+    checkupCategoryList.length === 0 && checkupCategoryFindAction()
+  }, [checkupCategoryFindAction, checkupCategoryList.length])
 
   useEffect(() => {
     setCheckupComponentData({ checkupComponent: selectedCheckupComponent })

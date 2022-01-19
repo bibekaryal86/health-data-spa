@@ -8,6 +8,7 @@ import { checkupComponentFindAction } from '../actions/checkup.component.find.ac
 import { checkupComponentInsertAction } from '../actions/checkup.component.insert.action'
 import { checkupComponentUpdateAction } from '../actions/checkup.component.update.action'
 import { checkupComponentDeleteAction } from '../actions/checkup.component.delete.action'
+import { checkupCategoryFindAction } from '../../checkup_category'
 
 const mapStateToProps = ({ checkupCategory, checkupComponent }: GlobalState): CheckupComponentState => {
   return {
@@ -29,6 +30,7 @@ const mapDispatchToProps = {
   checkupComponentUpdateAction: (selectedId: string, checkupComponent: CheckupComponentType) =>
     checkupComponentUpdateAction(selectedId, checkupComponent),
   checkupComponentDeleteAction: (selectedId: string) => checkupComponentDeleteAction(selectedId),
+  checkupCategoryFindAction: () => checkupCategoryFindAction(),
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckupComponentDetails)
