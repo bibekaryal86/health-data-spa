@@ -6,12 +6,13 @@ import { CheckupComponentState } from '../types/checkup.component.data.types'
 import { checkupComponentReset } from '../utils/checkup.component.utils'
 import { checkupComponentFindAction } from '../actions/checkup.component.find.action'
 
-const mapStateToProps = ({ checkupComponent }: GlobalState): CheckupComponentState => {
+const mapStateToProps = ({ checkupCategory, checkupComponent }: GlobalState): CheckupComponentState => {
   return {
     errMsg: checkupComponent.errMsg,
     success: checkupComponent.success,
     checkupComponentList: checkupComponent.checkupComponentList,
     selectedCheckupComponent: checkupComponent.selectedCheckupComponent,
+    checkupCategoryList: checkupCategory.checkupCategoryList,
   }
 }
 

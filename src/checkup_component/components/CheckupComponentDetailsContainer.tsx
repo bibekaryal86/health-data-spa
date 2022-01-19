@@ -9,12 +9,13 @@ import { checkupComponentInsertAction } from '../actions/checkup.component.inser
 import { checkupComponentUpdateAction } from '../actions/checkup.component.update.action'
 import { checkupComponentDeleteAction } from '../actions/checkup.component.delete.action'
 
-const mapStateToProps = ({ checkupComponent }: GlobalState): CheckupComponentState => {
+const mapStateToProps = ({ checkupCategory, checkupComponent }: GlobalState): CheckupComponentState => {
   return {
     errMsg: checkupComponent.errMsg,
     success: checkupComponent.success,
     checkupComponentList: checkupComponent.checkupComponentList,
     selectedCheckupComponent: checkupComponent.selectedCheckupComponent,
+    checkupCategoryList: checkupCategory.checkupCategoryList,
   }
 }
 

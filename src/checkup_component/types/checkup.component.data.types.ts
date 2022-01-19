@@ -2,7 +2,7 @@ import { CheckupCategoryType, DefaultCheckupCategory } from '../../checkup_categ
 
 export interface CheckupComponentType {
   id: string
-  checkupCategory: Partial<CheckupCategoryType>
+  checkupCategory: CheckupCategoryType
   componentName: string
   standardLow?: string
   standardHigh?: string
@@ -26,14 +26,24 @@ export interface CheckupComponentState {
   success: string
   checkupComponentList: CheckupComponentType[]
   selectedCheckupComponent: CheckupComponentType
+  checkupCategoryList: CheckupCategoryType[]
 }
 
 export interface CheckupComponentAction extends CheckupComponentState {
   type: string
 }
 
-export interface CheckupContainerDetailsAction {
+export interface CheckupComponentDetailsAction {
   checkupComponent: CheckupComponentType
+}
+
+export interface CheckupComponentUpdate {
+  categoryId: string
+  componentName: string
+  standardLow: string
+  standardHigh: string
+  measureUnit: string
+  componentComments: string
 }
 
 export const DefaultCheckupComponent: CheckupComponentType = {
@@ -51,4 +61,5 @@ export const DefaultCheckupComponentState: CheckupComponentState = {
   success: '',
   checkupComponentList: [],
   selectedCheckupComponent: DefaultCheckupComponent,
+  checkupCategoryList: [],
 }

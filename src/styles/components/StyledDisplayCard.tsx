@@ -11,6 +11,7 @@ interface DisplayCardProps {
   fontWeight?: string
   color?: string
   children: string | JSX.Element | JSX.Element[]
+  container?: boolean
 }
 
 export const DisplayCardWrapper = styled.div.attrs({
@@ -49,6 +50,14 @@ export const DisplayCardRow = styled.div.attrs({
 
 export const DisplayCardWrapperBody = (props: DisplayCardProps) => (
   <DisplayCardWrapper {...props}>
-    <DisplayCardBody {...props}>{props.children}</DisplayCardBody>
+    <DisplayCardBody {...props}>
+      {props.container ? <div className="container">{props.children}</div> : <>{props.children}</>}
+    </DisplayCardBody>
   </DisplayCardWrapper>
+)
+
+export const DisplayCardWrapperRow = (props: DisplayCardProps) => (
+  <DisplayCardRow {...props}>
+    {props.container ? <div className="row">{props.children}</div> : <>{props.children}</>}
+  </DisplayCardRow>
 )

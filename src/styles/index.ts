@@ -4,6 +4,14 @@ import {
   DisplayCardRow,
   DisplayCardWrapper,
   DisplayCardWrapperBody,
+  DisplayCardWrapperRow,
 } from './components/StyledDisplayCard'
 
-export { AllGlobalStyles, DisplayCardBody, DisplayCardRow, DisplayCardWrapper, DisplayCardWrapperBody }
+export {
+  AllGlobalStyles,
+  DisplayCardBody,
+  DisplayCardRow,
+  DisplayCardWrapper,
+  DisplayCardWrapperBody,
+  DisplayCardWrapperRow,
+}
