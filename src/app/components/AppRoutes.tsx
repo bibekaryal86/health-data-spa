@@ -84,6 +84,16 @@ export const protectedRoutes: RoutesType[] = [
       },
     ],
   },
+  {
+    path: '/checkup_component_selected',
+    element: <OneCheckupComponentContainer />,
+    subroutes: [
+      {
+        path: ':id',
+        element: <OneCheckupComponentContainer />,
+      },
+    ],
+  },
 ]
 
 export default AppRoutes

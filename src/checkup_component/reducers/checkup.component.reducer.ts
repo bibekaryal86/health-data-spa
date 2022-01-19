@@ -1,6 +1,7 @@
 import {
   CheckupComponentAction,
-  CheckupComponentState, DefaultCheckupComponent,
+  CheckupComponentState,
+  DefaultCheckupComponent,
   DefaultCheckupComponentState,
 } from '../types/checkup.component.data.types'
 import {
