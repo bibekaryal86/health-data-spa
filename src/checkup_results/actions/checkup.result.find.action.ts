@@ -8,11 +8,11 @@ import {
   checkupResultsSelectResult,
 } from '../utils/checkup.result.utils'
 import { CheckupResultResponse, CheckupResultType } from '../types/checkup.result.data.types'
-import { Async, getEndpoint } from '../../common'
+import { Async, FetchOptions, getEndpoint } from '../../common'
 import { CHECKUP_RESULT_FIND_FAILURE, CHECKUP_RESULT_FIND_REQUEST } from '../types/checkup.result.action.types'
 import { MSG_KEY_CHECKUP_RESULT_FIND_ERROR } from '../../constants'
 
-export const checkupResultFindAction = (selectedCheckupResultId?: string, isFetchCall?: boolean) => {
+export const checkupResultFindAction = (username: string, selectedCheckupResultId?: string, isFetchCall?: boolean) => {
   return async (dispatch: React.Dispatch<GlobalDispatch>, getStore: () => GlobalState): Promise<void> => {
     dispatch(checkupResultsRequest(CHECKUP_RESULT_FIND_REQUEST))
 
@@ -22,7 +22,10 @@ export const checkupResultFindAction = (selectedCheckupResultId?: string, isFetc
 
       if (checkupResultInStore.length == 0 || isFetchCall) {
         const endpoint = getEndpoint(process.env.RESULT_FIND as string)
-        checkupResultResponse = (await Async.fetch(endpoint, {})) as CheckupResultResponse
+        const options: Partial<FetchOptions> = {
+          queryParams: { username },
+        }
+        checkupResultResponse = (await Async.fetch(endpoint, options)) as CheckupResultResponse
       } else {
         checkupResultResponse = {
           errMsg: '',
