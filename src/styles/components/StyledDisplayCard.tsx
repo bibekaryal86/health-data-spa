@@ -14,7 +14,7 @@ interface DisplayCardProps {
   container?: boolean
 }
 
-export const DisplayCardWrapper = styled.div.attrs({
+const DisplayCardWrapper = styled.div.attrs({
   className: 'display-card-wrapper',
 })<DisplayCardProps>`
   display: flex;
@@ -26,7 +26,7 @@ export const DisplayCardWrapper = styled.div.attrs({
   color: ${(props) => (props.color ? props.color : 'automatic')};
 `
 
-export const DisplayCardBody = styled.div.attrs({
+const DisplayCardBody = styled.div.attrs({
   className: 'display-card-body',
 })<DisplayCardProps>`
   border: 1px solid lightgrey;
@@ -38,7 +38,7 @@ export const DisplayCardBody = styled.div.attrs({
   background: ${(props) => (props.background ? props.background : 'ghostwhite')};
 `
 
-export const DisplayCardRow = styled.div.attrs({
+const DisplayCardRow = styled.div.attrs({
   className: 'display-card-row',
 })<DisplayCardProps>`
   padding: 5px;
