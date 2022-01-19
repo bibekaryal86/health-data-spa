@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { GlobalState } from '../../app/store/redux'
 import { resetAlert, setAlert } from '../../common'
-import OneCheckupComponent from './OneCheckupComponent'
+import CheckupComponentDetails from './CheckupComponentDetails'
 import { CheckupComponentState, CheckupComponentType } from '../types/checkup.component.data.types'
 import { checkupComponentReset } from '../utils/checkup.component.utils'
 import { checkupComponentFindAction } from '../actions/checkup.component.find.action'
@@ -30,4 +30,4 @@ const mapDispatchToProps = {
   checkupComponentDeleteAction: (selectedId: string) => checkupComponentDeleteAction(selectedId),
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OneCheckupComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(CheckupComponentDetails)

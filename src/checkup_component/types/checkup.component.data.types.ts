@@ -32,7 +32,7 @@ export interface CheckupComponentAction extends CheckupComponentState {
   type: string
 }
 
-export interface OneCheckupComponentAction {
+export interface CheckupContainerDetailsAction {
   checkupComponent: CheckupComponentType
 }
 

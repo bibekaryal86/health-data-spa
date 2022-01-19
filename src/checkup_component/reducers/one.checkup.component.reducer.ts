@@ -1,12 +1,12 @@
 import {
   CheckupComponentType,
   DefaultCheckupComponent,
-  OneCheckupComponentAction,
+  CheckupContainerDetailsAction,
 } from '../types/checkup.component.data.types'
 
-export default function oneCheckupComponent(
+export default function checkupComponentDetails(
   state = DefaultCheckupComponent,
-  action: OneCheckupComponentAction,
+  action: CheckupContainerDetailsAction,
 ): CheckupComponentType {
   const { checkupComponent } = action
   return {

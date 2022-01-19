@@ -2,7 +2,7 @@
 import checkupComponent from './reducers/checkup.component.reducer'
 // components
 import CheckupComponentContainer from './components/CheckupComponentContainer'
-import OneCheckupComponentContainer from './components/OneCheckupComponentContainer'
+import CheckupComponentDetailsContainer from './components/CheckupComponentDetailsContainer'
 // types
 import {
   CheckupComponentState,
@@ -10,5 +10,5 @@ import {
   DefaultCheckupComponent,
 } from './types/checkup.component.data.types'
 
-export { checkupComponent, DefaultCheckupComponent, CheckupComponentContainer, OneCheckupComponentContainer }
+export { checkupComponent, DefaultCheckupComponent, CheckupComponentContainer, CheckupComponentDetailsContainer }
 export type { CheckupComponentState, CheckupComponentType }

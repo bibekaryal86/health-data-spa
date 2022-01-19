@@ -7,7 +7,7 @@ import { RoutesType } from '../types/routes.data.types'
 import { LocalStorage } from '../../common'
 import { Home } from '../../home'
 import { CheckupCategoryContainer } from '../../checkup_category'
-import { CheckupComponentContainer, OneCheckupComponentContainer } from '../../checkup_component'
+import { CheckupComponentContainer, CheckupComponentDetailsContainer } from '../../checkup_component'
 
 const AppRoutes = (): React.ReactElement => {
   return (
@@ -80,17 +80,17 @@ export const protectedRoutes: RoutesType[] = [
     subroutes: [
       {
         path: ':id',
-        element: <OneCheckupComponentContainer />,
+        element: <CheckupComponentDetailsContainer />,
       },
     ],
   },
   {
     path: '/checkup_component_selected',
-    element: <OneCheckupComponentContainer />,
+    element: <CheckupComponentDetailsContainer />,
     subroutes: [
       {
         path: ':id',
-        element: <OneCheckupComponentContainer />,
+        element: <CheckupComponentDetailsContainer />,
       },
     ],
   },

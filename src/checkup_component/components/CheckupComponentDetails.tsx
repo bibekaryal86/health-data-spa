@@ -2,11 +2,11 @@ import React, { useEffect, useReducer, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { DisplayCardWrapperBody } from '../../styles'
 import { CheckupComponentType, DefaultCheckupComponent } from '../types/checkup.component.data.types'
-import oneCheckupComponent from '../reducers/one.checkup.component.reducer'
+import checkupComponentDetails from '../reducers/one.checkup.component.reducer'
 import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
 import { HrefLink } from '../../common'
 
-interface OneCheckupComponentProps {
+interface CheckupComponentDetailsProps {
   errMsg: string
   success: string
   checkupComponentList: CheckupComponentType[]
@@ -20,8 +20,8 @@ interface OneCheckupComponentProps {
   checkupComponentDeleteAction: (selectedId: string) => void
 }
 
-const OneCheckupComponent = (props: OneCheckupComponentProps): React.ReactElement => {
-  const [checkupComponentData, setCheckupComponentData] = useReducer(oneCheckupComponent, DefaultCheckupComponent)
+const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.ReactElement => {
+  const [checkupComponentData, setCheckupComponentData] = useReducer(checkupComponentDetails, DefaultCheckupComponent)
   const [isValidId, setIsValidId] = useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const { id } = useParams()
@@ -110,4 +110,4 @@ const OneCheckupComponent = (props: OneCheckupComponentProps): React.ReactElemen
   return <>{showBodyHeader()}</>
 }
 
-export default OneCheckupComponent
+export default CheckupComponentDetails
