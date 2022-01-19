@@ -121,12 +121,12 @@ const getUpdatedCheckupComponent = (
     id: checkupComponentData.id,
     checkupCategory: categoryId ? { id: categoryId, categoryName: '' } : checkupComponentData.checkupCategory,
     componentName: setInputFieldValue(componentName, checkupComponentData.componentName),
-    standardLow: standardLow ? standardLow : checkupComponentData.standardLow,
-    standardHigh: standardHigh ? standardHigh : checkupComponentData.standardHigh,
-    measureUnit: measureUnit ? measureUnit : checkupComponentData.measureUnit,
-    componentComments: componentComments ? componentComments : checkupComponentData.componentComments,
+    standardLow: setInputFieldValue(standardLow, checkupComponentData.standardLow),
+    standardHigh: setInputFieldValue(standardHigh, checkupComponentData.standardHigh),
+    measureUnit: setInputFieldValue(measureUnit, checkupComponentData.measureUnit),
+    componentComments: setInputFieldValue(componentComments, checkupComponentData.componentComments),
   }
 }
 
-const setInputFieldValue = (inputValue: string | undefined, defaultValue: string) =>
+const setInputFieldValue = (inputValue: string | undefined, defaultValue = '') =>
   inputValue === undefined ? defaultValue : inputValue
