@@ -124,11 +124,11 @@ const CheckupResultDetails = (props: CheckupResultDetailsProps): React.ReactElem
   const deleteModal = () => (
     <Modal
       setIsModalOpen={setIsDeleteModalOpen}
-      header='Warning'
+      header="Warning"
       body={deleteModalBody()}
-      primaryButton='Yes'
+      primaryButton="Yes"
       primaryButtonAction={deleteCheckupResultEnd}
-      secondaryButton='Cancel'
+      secondaryButton="Cancel"
       secondaryButtonAction={() => setIsDeleteModalOpen(false)}
     />
   )
@@ -139,15 +139,15 @@ const CheckupResultDetails = (props: CheckupResultDetailsProps): React.ReactElem
   }
 
   const showBodyHeader = () => (
-    <DisplayCardWrapperBody background='slateblue' color='whitesmoke'>
+    <DisplayCardWrapperBody background="slateblue" color="whitesmoke">
       <HrefLink
-        id='checkup-result-all-results-link-1'
-        linkTo='#'
-        title='To All Checkup Results List'
+        id="checkup-result-all-results-link-1"
+        linkTo="#"
+        title="To All Checkup Results List"
         onClick={() => showAllCheckupResults()}
         underline
-        color='inherit'
-        margin='0px 0px 5px 0px'
+        color="inherit"
+        margin="0px 0px 5px 0px"
       />
       <h4>
         Checkup Result Details: {selectedCheckupResult.checkupDate}--
@@ -158,9 +158,9 @@ const CheckupResultDetails = (props: CheckupResultDetailsProps): React.ReactElem
 
   const componentSelect = () => (
     <Select
-      className='u-full-width'
-      id='checkup-result-details-component-select'
-      label='Checkup Component'
+      className="u-full-width"
+      id="checkup-result-details-component-select"
+      label="Checkup Component"
       onChange={(event) =>
         handleCheckupResultFieldChange(event, 'componentId', checkupResultData, setCheckupResultData)
       }
@@ -172,9 +172,9 @@ const CheckupResultDetails = (props: CheckupResultDetailsProps): React.ReactElem
 
   const checkupDateInput = () => (
     <Input
-      className='u-full-width'
-      id='checkup-result-details-date-input'
-      label='Checkup Date'
+      className="u-full-width"
+      id="checkup-result-details-date-input"
+      label="Checkup Date"
       type={InputType.date}
       onChange={(event) =>
         handleCheckupResultFieldChange(event, 'checkupDate', checkupResultData, setCheckupResultData)
@@ -187,9 +187,9 @@ const CheckupResultDetails = (props: CheckupResultDetailsProps): React.ReactElem
 
   const testResultInput = () => (
     <Input
-      className='u-full-width'
-      id='checkup-result-details-result-input'
-      label='Test Result'
+      className="u-full-width"
+      id="checkup-result-details-result-input"
+      label="Test Result"
       type={InputType.text}
       onChange={(event) => handleCheckupResultFieldChange(event, 'testResult', checkupResultData, setCheckupResultData)}
       value={checkupResultData.testResult}
@@ -205,8 +205,8 @@ const CheckupResultDetails = (props: CheckupResultDetailsProps): React.ReactElem
 
   const addButton = () => (
     <Button
-      id='checkup-result-details-button-add'
-      title='Add Checkup Result'
+      id="checkup-result-details-button-add"
+      title="Add Checkup Result"
       onClick={() => insertCheckupResult()}
       includeBorder
       disabled={isButtonDisabled()}
@@ -215,8 +215,8 @@ const CheckupResultDetails = (props: CheckupResultDetailsProps): React.ReactElem
 
   const updateButton = () => (
     <Button
-      id='checkup-result-details-button-add'
-      title='Update Checkup Result'
+      id="checkup-result-details-button-add"
+      title="Update Checkup Result"
       onClick={() => updateCheckupResult()}
       includeBorder
       disabled={isButtonDisabled()}
@@ -225,8 +225,8 @@ const CheckupResultDetails = (props: CheckupResultDetailsProps): React.ReactElem
 
   const deleteButton = () => (
     <Button
-      id='checkup-result-details-button-delete'
-      title='Delete Checkup Result'
+      id="checkup-result-details-button-delete"
+      title="Delete Checkup Result"
       onClick={() => deleteCheckupResultBegin()}
       includeBorder
     />
@@ -234,8 +234,8 @@ const CheckupResultDetails = (props: CheckupResultDetailsProps): React.ReactElem
 
   const revertButton = () => (
     <Button
-      id='checkup-result-details-button-reset'
-      title='Revert Changes'
+      id="checkup-result-details-button-reset"
+      title="Revert Changes"
       onClick={() => setCheckupResultData({ checkupResult: selectedCheckupResult })}
       includeBorder
       disabled={isButtonDisabled()}
@@ -258,14 +258,14 @@ const CheckupResultDetails = (props: CheckupResultDetailsProps): React.ReactElem
   )
 
   const showBodyContent = () => (
-    <DisplayCardWrapperBody id='checkup-result-body-content' container>
+    <DisplayCardWrapperBody id="checkup-result-body-content" container>
       <DisplayCardWrapperRow container>
-        <DisplayCardWrapperColumn classname='four columns'>{componentSelect()}</DisplayCardWrapperColumn>
-        <DisplayCardWrapperColumn classname='four columns'>{checkupDateInput()}</DisplayCardWrapperColumn>
-        <DisplayCardWrapperColumn classname='four columns'>{testResultInput()}</DisplayCardWrapperColumn>
+        <DisplayCardWrapperColumn classname="four columns">{componentSelect()}</DisplayCardWrapperColumn>
+        <DisplayCardWrapperColumn classname="four columns">{checkupDateInput()}</DisplayCardWrapperColumn>
+        <DisplayCardWrapperColumn classname="four columns">{testResultInput()}</DisplayCardWrapperColumn>
       </DisplayCardWrapperRow>
       <DisplayCardWrapperRow container>
-        <DisplayCardWrapperColumn classname='twelve columns'>
+        <DisplayCardWrapperColumn classname="twelve columns">
           {id ? updateButtons() : addButtons()}
         </DisplayCardWrapperColumn>
       </DisplayCardWrapperRow>
