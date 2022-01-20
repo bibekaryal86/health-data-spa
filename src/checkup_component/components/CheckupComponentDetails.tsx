@@ -4,7 +4,7 @@ import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow
 import { CheckupComponentType, DefaultCheckupComponent } from '../types/checkup.component.data.types'
 import checkupComponentDetails from '../reducers/checkup.component.details.reducer'
 import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
-import { Button, checkupCategoryOptions, HrefLink, Input, InputType, Modal, Select } from '../../common'
+import { Button, checkupCategoryOptions, HrefLink, Input, InputType, Modal, Select, standardValue } from '../../common'
 import { handleCheckupComponentFieldChange, validateCheckupComponent } from '../utils/checkup.component.utils'
 import { CheckupCategoryType } from '../../checkup_category'
 
@@ -163,8 +163,6 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
       required
     />
   )
-
-  const standardValue = (standard: string | undefined) => (standard === undefined ? '' : standard)
 
   const standardLowInput = () => (
     <Input

@@ -56,7 +56,7 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
   const showAddCheckupComponent = () => (
     <DisplayCardWrapperBody color="whitesmoke">
       <HrefLink
-        id="checkup-category-href-link"
+        id="checkup-component-new-href-link"
         linkTo="#"
         title="To Add a New Checkup Component Click Here"
         onClick={() => onClickToComponent('')}
@@ -66,7 +66,7 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
 
   const actionLinks = (id: string) => (
     <HrefLink
-      id="checkup-category-href-link"
+      id="checkup-component-action-href-link"
       linkTo="#"
       title="Click Here to View Details"
       onClick={() => onClickToComponent(id)}

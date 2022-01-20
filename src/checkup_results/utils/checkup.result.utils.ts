@@ -1,5 +1,6 @@
 import React from 'react'
 import { GlobalDispatch } from '../../app/store/redux'
+import { inputFieldValue } from '../../common'
 import { CheckupResultDetailsAction, CheckupResultType, CheckupResultUpdate } from '../types/checkup.result.data.types'
 import {
   CHECKUP_RESULT_COMPLETE,
@@ -96,12 +97,9 @@ const getUpdatedCheckupResult = (
     checkupComponent: componentId
       ? { ...DefaultCheckupComponent, id: componentId }
       : checkupResultData.checkupComponent,
-    checkupDate: setInputFieldValue(checkupDate, checkupResultData.checkupDate),
-    testResult: setInputFieldValue(testResult, checkupResultData.testResult),
+    checkupDate: inputFieldValue(checkupDate, checkupResultData.checkupDate),
+    testResult: inputFieldValue(testResult, checkupResultData.testResult),
     username: checkupResultData.username,
     resultFlag: checkupResultData.resultFlag,
   }
 }
-
-const setInputFieldValue = (inputValue: string | undefined, defaultValue = '') =>
-  inputValue === undefined ? defaultValue : inputValue.toUpperCase()

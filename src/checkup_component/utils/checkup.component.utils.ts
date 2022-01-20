@@ -1,5 +1,6 @@
 import React from 'react'
 import { GlobalDispatch } from '../../app/store/redux'
+import { inputFieldValue } from '../../common'
 import {
   CheckupComponentDetailsAction,
   CheckupComponentType,
@@ -112,13 +113,10 @@ const getUpdatedCheckupComponent = (
   return {
     id: checkupComponentData.id,
     checkupCategory: categoryId ? { id: categoryId, categoryName: '' } : checkupComponentData.checkupCategory,
-    componentName: setInputFieldValue(componentName, checkupComponentData.componentName),
-    standardLow: setInputFieldValue(standardLow, checkupComponentData.standardLow),
-    standardHigh: setInputFieldValue(standardHigh, checkupComponentData.standardHigh),
-    measureUnit: setInputFieldValue(measureUnit, checkupComponentData.measureUnit),
-    componentComments: setInputFieldValue(componentComments, checkupComponentData.componentComments),
+    componentName: inputFieldValue(componentName, checkupComponentData.componentName),
+    standardLow: inputFieldValue(standardLow, checkupComponentData.standardLow),
+    standardHigh: inputFieldValue(standardHigh, checkupComponentData.standardHigh),
+    measureUnit: inputFieldValue(measureUnit, checkupComponentData.measureUnit),
+    componentComments: inputFieldValue(componentComments, checkupComponentData.componentComments),
   }
 }
-
-const setInputFieldValue = (inputValue: string | undefined, defaultValue = '') =>
-  inputValue === undefined ? defaultValue : inputValue.toUpperCase()

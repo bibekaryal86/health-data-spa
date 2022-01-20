@@ -4,7 +4,7 @@ import { resetAlert, setAlert } from '../../common'
 import { CheckupResultState } from '../types/checkup.result.data.types'
 import { checkupResultReset } from '../utils/checkup.result.utils'
 import { checkupResultFindAction } from '../actions/checkup.result.find.action'
-import { Home } from '../../home'
+import CheckupResult from './CheckupResult'
 
 const mapStateToProps = ({ checkupCategory, checkupComponent, checkupResult }: GlobalState): CheckupResultState => {
   return {
@@ -24,4 +24,4 @@ const mapDispatchToProps = {
   checkupResultFindAction: (username: string) => checkupResultFindAction(username),
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(CheckupResult)

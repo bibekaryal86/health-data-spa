@@ -13,3 +13,8 @@ export const checkupComponentOptions = (checkupComponents: CheckupComponentType[
   checkupComponents.forEach((component) => selectOptions.push({ text: component.componentName, value: component.id }))
   return selectOptions
 }
+
+export const inputFieldValue = (inputValue: string | undefined, defaultValue = '') =>
+  inputValue === undefined ? defaultValue : inputValue.toUpperCase()
+
+export const standardValue = (standard: string | undefined) => (standard === undefined ? '' : standard)
