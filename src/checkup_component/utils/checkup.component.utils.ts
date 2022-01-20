@@ -116,7 +116,7 @@ const getUpdatedCheckupComponent = (
     componentName: inputFieldValue(componentName, checkupComponentData.componentName),
     standardLow: inputFieldValue(standardLow, checkupComponentData.standardLow),
     standardHigh: inputFieldValue(standardHigh, checkupComponentData.standardHigh),
-    measureUnit: inputFieldValue(measureUnit, checkupComponentData.measureUnit),
+    measureUnit: inputFieldValue(measureUnit, checkupComponentData.measureUnit, true),
     componentComments: inputFieldValue(componentComments, checkupComponentData.componentComments),
   }
 }

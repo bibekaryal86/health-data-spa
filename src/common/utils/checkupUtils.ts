@@ -14,7 +14,7 @@ export const checkupComponentOptions = (checkupComponents: CheckupComponentType[
   return selectOptions
 }
 
-export const inputFieldValue = (inputValue: string | undefined, defaultValue = '') =>
-  inputValue === undefined ? defaultValue : inputValue.toUpperCase()
+export const inputFieldValue = (inputValue: string | undefined, defaultValue = '', isMaintainCase = false) =>
+  inputValue === undefined ? defaultValue : isMaintainCase ? inputValue : inputValue.toUpperCase()
 
 export const standardValue = (standard: string | undefined) => (standard === undefined ? '' : standard)
