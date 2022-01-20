@@ -100,7 +100,7 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
   const deleteCheckupComponentBegin = () => setIsDeleteModalOpen(true)
   const deleteModalBody = () => (
     <>
-      <p>Are you sure you want to delete the account: {checkupComponentData.componentName}?</p>
+      <p>Are you sure you want to delete: {checkupComponentData.componentName}?</p>
     </>
   )
   const deleteModal = () => (

@@ -9,7 +9,7 @@ import { checkupResultFindAction } from '../actions/checkup.result.find.action'
 import { checkupResultInsertAction } from '../actions/checkup.result.insert.action'
 import { checkupResultUpdateAction } from '../actions/checkup.result.update.action'
 import { checkupResultDeleteAction } from '../actions/checkup.result.delete.action'
-import { Home } from '../../home'
+import CheckupResultDetails from './CheckupResultDetails'
 
 const mapStateToProps = ({ checkupCategory, checkupComponent, checkupResult }: GlobalState): CheckupResultState => {
   return {
@@ -26,7 +26,7 @@ const mapDispatchToProps = {
   setAlert: (type: string, messageKey: string) => setAlert(type, messageKey),
   resetAlert: () => resetAlert(),
   checkupResultReset: () => checkupResultReset(),
-  checkupResultFindAction: (username: string) => checkupResultFindAction(username),
+  checkupResultFindAction: (username: string, selectedId: string) => checkupResultFindAction(username, selectedId),
   checkupResultInsertAction: (checkupResult: CheckupResultType) => checkupResultInsertAction(checkupResult),
   checkupResultUpdateAction: (selectedId: string, checkupResult: CheckupResultType) =>
     checkupResultUpdateAction(selectedId, checkupResult),
@@ -35,4 +35,4 @@ const mapDispatchToProps = {
   checkupComponentFindAction: () => checkupComponentFindAction(),
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(CheckupResultDetails)
