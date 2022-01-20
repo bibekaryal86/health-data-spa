@@ -76,7 +76,7 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
   const headers = ['Category Name', 'Component Name', 'Actions']
   const data = Array.from(checkupComponentList, (x) => {
     return {
-      categoryName: x.checkupCategory.categoryName || 'CATEGORY_NAME_UNDEFINED',
+      categoryName: x.checkupCategory.categoryName || 'ERROR',
       componentName: x.componentName,
       actions: actionLinks(x.id),
     }
