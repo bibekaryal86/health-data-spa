@@ -15,13 +15,13 @@ import {
 } from '../types/checkup.result.action.types'
 import { MSG_KEY_CHECKUP_RESULT_INSERT_ERROR, MSG_KEY_CHECKUP_RESULT_INSERT_SUCCESS } from '../../constants'
 
-export const checkupResultInsertAction = (checkupResult: CheckupResultType) => {
+export const checkupResultInsertAction = (username: string, checkupResult: CheckupResultType) => {
   return async (dispatch: React.Dispatch<GlobalDispatch>): Promise<void> => {
     dispatch(checkupResultsRequest(CHECKUP_RESULT_INSERT_REQUEST))
 
     try {
       const checkupResultRequest: Partial<CheckupResultRequest> = {
-        checkupResult,
+        checkupResult: { ...checkupResult, username },
       }
       const endpoint = getEndpoint(process.env.RESULT_INSERT as string)
       const options: Partial<FetchOptions> = {

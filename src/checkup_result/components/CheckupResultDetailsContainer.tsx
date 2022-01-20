@@ -27,7 +27,8 @@ const mapDispatchToProps = {
   resetAlert: () => resetAlert(),
   checkupResultReset: () => checkupResultReset(),
   checkupResultFindAction: (username: string, selectedId: string) => checkupResultFindAction(username, selectedId),
-  checkupResultInsertAction: (checkupResult: CheckupResultType) => checkupResultInsertAction(checkupResult),
+  checkupResultInsertAction: (username: string, checkupResult: CheckupResultType) =>
+    checkupResultInsertAction(username, checkupResult),
   checkupResultUpdateAction: (selectedId: string, checkupResult: CheckupResultType) =>
     checkupResultUpdateAction(selectedId, checkupResult),
   checkupResultDeleteAction: (selectedId: string) => checkupResultDeleteAction(selectedId),

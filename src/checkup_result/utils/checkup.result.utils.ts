@@ -26,7 +26,7 @@ export const validateCheckupResult = (checkupResult: CheckupResultType): string 
     invalids += ' [Checkup Date] '
   }
 
-  if (!checkupResult.testResult || checkupResult.testResult.trim().length < 3) {
+  if (!checkupResult.testResult || checkupResult.testResult.trim().length === 0) {
     invalids += ' [Test Result] '
   }
 

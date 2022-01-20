@@ -21,7 +21,7 @@ interface CheckupResultDetailsProps {
   resetAlert: () => void
   checkupResultReset: () => void
   checkupResultFindAction: (username: string, selectedId: string) => void
-  checkupResultInsertAction: (checkupResult: CheckupResultType) => void
+  checkupResultInsertAction: (username: string, checkupResult: CheckupResultType) => void
   checkupResultUpdateAction: (selectedId: string, checkupResult: CheckupResultType) => void
   checkupResultDeleteAction: (selectedId: string) => void
   checkupComponentFindAction: () => void
@@ -96,7 +96,7 @@ const CheckupResultDetails = (props: CheckupResultDetailsProps): React.ReactElem
       setAlert(ALERT_TYPE_FAILURE, errMsg)
     } else {
       resetAlert()
-      checkupResultInsertAction(checkupResultData)
+      checkupResultInsertAction(username, checkupResultData)
       showAllCheckupResults()
     }
   }
