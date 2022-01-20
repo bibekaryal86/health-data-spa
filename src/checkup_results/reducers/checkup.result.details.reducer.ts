@@ -1,4 +1,4 @@
-import { CheckupResultType, DefaultCheckupResult, CheckupResultDetailsAction } from '../types/checkup.result.data.types'
+import { CheckupResultDetailsAction, CheckupResultType, DefaultCheckupResult } from '../types/checkup.result.data.types'
 
 export default function checkupResultDetails(
   state = DefaultCheckupResult,
@@ -12,6 +12,6 @@ export default function checkupResultDetails(
     checkupDate: checkupResult.checkupDate,
     testResult: checkupResult.testResult,
     username: checkupResult.username,
-    resultFlag: checkupResult.resultFlag
+    resultFlag: checkupResult.resultFlag,
   }
 }

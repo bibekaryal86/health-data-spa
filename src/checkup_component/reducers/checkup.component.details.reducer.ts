@@ -1,7 +1,7 @@
 import {
+  CheckupComponentDetailsAction,
   CheckupComponentType,
   DefaultCheckupComponent,
-  CheckupComponentDetailsAction,
 } from '../types/checkup.component.data.types'
 
 export default function checkupComponentDetails(
