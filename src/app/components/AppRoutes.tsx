@@ -8,7 +8,7 @@ import { LocalStorage } from '../../common'
 import { Home } from '../../home'
 import { CheckupCategoryContainer } from '../../checkup_category'
 import { CheckupComponentContainer, CheckupComponentDetailsContainer } from '../../checkup_component'
-import { CheckupResultContainer, CheckupResultDetailsContainer } from '../../checkup_results'
+import { CheckupResultContainer, CheckupResultDetailsContainer } from '../../checkup_result'
 
 const AppRoutes = (): React.ReactElement => {
   return (
