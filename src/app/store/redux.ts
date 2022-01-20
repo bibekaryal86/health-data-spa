@@ -8,6 +8,7 @@ import { USER_LOGOUT } from '../types/login.action.types'
 import { alert, AlertState, spinner, SpinnerState } from '../../common'
 import { checkupCategory, CheckupCategoryState } from '../../checkup_category'
 import { checkupComponent, CheckupComponentState } from '../../checkup_component'
+import { checkupResult, CheckupResultState } from '../../checkup_result'
 
 // ACTIONS (ESP: FETCH ACTIONS) SHOULD BE NAMED IN THE FOLLOWING PATTERN:
 // xxx_REQUEST, xxx_SUCCESS, xxx_FAILURE, xxx_COMPLETE
@@ -18,6 +19,7 @@ export interface GlobalState {
   spinner: SpinnerState
   checkupCategory: CheckupCategoryState
   checkupComponent: CheckupComponentState
+  checkupResult: CheckupResultState
 }
 
 export interface GlobalDispatch {
@@ -29,6 +31,7 @@ const appReducers = combineReducers({
   spinner,
   checkupCategory,
   checkupComponent,
+  checkupResult,
 })
 
 const rootReducer = (state: any, action: any) => {

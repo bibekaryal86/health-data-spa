@@ -17,6 +17,7 @@ import alert from './reducers/alert.reducer'
 // utils
 import { AlertState, resetAlert, setAlert } from './utils/alerts'
 import { getEndpoint } from './utils/endpoint'
+import { checkupCategoryOptions, checkupComponentOptions, inputFieldValue, standardValue } from './utils/checkupUtils'
 // types
 import { Async, FetchOptions, FetchResponse } from './utils/fetch'
 import { LocalStorage } from './utils/localStorageHelper'
@@ -39,4 +40,5 @@ export {
   setSpinner,
   resetSpinner,
 }
+export { checkupCategoryOptions, checkupComponentOptions, inputFieldValue, standardValue }
 export type { FetchOptions, FetchResponse, AlertState, SpinnerState }

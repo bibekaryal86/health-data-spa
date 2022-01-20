@@ -1,5 +1,6 @@
 import React from 'react'
 import { GlobalDispatch } from '../../app/store/redux'
+import { inputFieldValue } from '../../common'
 import {
   CheckupComponentDetailsAction,
   CheckupComponentType,
@@ -11,8 +12,6 @@ import {
   CHECKUP_COMPONENT_SELECT_COMPONENT,
   CHECKUP_COMPONENT_UNMOUNT,
 } from '../types/checkup.component.action.types'
-import { CheckupCategoryType } from '../../checkup_category'
-import { SelectOptionProps } from '../../common/forms/Select'
 
 export const checkupComponentReset = () => {
   return async (dispatch: React.Dispatch<GlobalDispatch>): Promise<void> => {
@@ -65,12 +64,6 @@ export const checkupComponentsSelectComponent = (selectedCheckupComponent: Check
   selectedCheckupComponent,
 })
 
-export const checkupCategoryOptions = (checkupCategories: CheckupCategoryType[]): SelectOptionProps[] => {
-  const selectOptions: SelectOptionProps[] = [{ text: 'Please Select', value: '' }]
-  checkupCategories.forEach((category) => selectOptions.push({ text: category.categoryName, value: category.id }))
-  return selectOptions
-}
-
 export const handleCheckupComponentFieldChange = (
   input: string,
   name: string,
@@ -120,13 +113,10 @@ const getUpdatedCheckupComponent = (
   return {
     id: checkupComponentData.id,
     checkupCategory: categoryId ? { id: categoryId, categoryName: '' } : checkupComponentData.checkupCategory,
-    componentName: setInputFieldValue(componentName, checkupComponentData.componentName),
-    standardLow: setInputFieldValue(standardLow, checkupComponentData.standardLow),
-    standardHigh: setInputFieldValue(standardHigh, checkupComponentData.standardHigh),
-    measureUnit: setInputFieldValue(measureUnit, checkupComponentData.measureUnit),
-    componentComments: setInputFieldValue(componentComments, checkupComponentData.componentComments),
+    componentName: inputFieldValue(componentName, checkupComponentData.componentName),
+    standardLow: inputFieldValue(standardLow, checkupComponentData.standardLow),
+    standardHigh: inputFieldValue(standardHigh, checkupComponentData.standardHigh),
+    measureUnit: inputFieldValue(measureUnit, checkupComponentData.measureUnit, true),
+    componentComments: inputFieldValue(componentComments, checkupComponentData.componentComments),
   }
 }
-
-const setInputFieldValue = (inputValue: string | undefined, defaultValue = '') =>
-  inputValue === undefined ? defaultValue : inputValue.toUpperCase()

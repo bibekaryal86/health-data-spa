@@ -81,7 +81,7 @@ const CheckupCategory = (props: CheckupCategoryProps): React.ReactElement => {
   const showAddCheckupCategory = () => (
     <DisplayCardWrapperBody color="whitesmoke">
       <HrefLink
-        id="checkup-category-href-link"
+        id="checkup-category-new-href-link"
         linkTo="#"
         title="To Add a New Checkup Category Click Here"
         onClick={() => checkupCategoryLocalDispatch(setCheckupCategoriesInsertModalOpen(true))}

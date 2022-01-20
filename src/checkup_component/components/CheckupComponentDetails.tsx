@@ -2,14 +2,10 @@ import React, { useEffect, useReducer, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow } from '../../styles'
 import { CheckupComponentType, DefaultCheckupComponent } from '../types/checkup.component.data.types'
-import checkupComponentDetails from '../reducers/one.checkup.component.reducer'
+import checkupComponentDetails from '../reducers/checkup.component.details.reducer'
 import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
-import { Button, HrefLink, Input, InputType, Modal, Select } from '../../common'
-import {
-  checkupCategoryOptions,
-  handleCheckupComponentFieldChange,
-  validateCheckupComponent,
-} from '../utils/checkup.component.utils'
+import { Button, checkupCategoryOptions, HrefLink, Input, InputType, Modal, Select, standardValue } from '../../common'
+import { handleCheckupComponentFieldChange, validateCheckupComponent } from '../utils/checkup.component.utils'
 import { CheckupCategoryType } from '../../checkup_category'
 
 interface CheckupComponentDetailsProps {
@@ -104,7 +100,7 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
   const deleteCheckupComponentBegin = () => setIsDeleteModalOpen(true)
   const deleteModalBody = () => (
     <>
-      <p>Are you sure you want to delete the account: {checkupComponentData.componentName}?</p>
+      <p>Are you sure you want to delete: {checkupComponentData.componentName}?</p>
     </>
   )
   const deleteModal = () => (
@@ -167,8 +163,6 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
       required
     />
   )
-
-  const standardValue = (standard: string | undefined) => (standard === undefined ? '' : standard)
 
   const standardLowInput = () => (
     <Input

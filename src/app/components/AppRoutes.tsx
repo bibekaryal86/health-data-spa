@@ -8,6 +8,7 @@ import { LocalStorage } from '../../common'
 import { Home } from '../../home'
 import { CheckupCategoryContainer } from '../../checkup_category'
 import { CheckupComponentContainer, CheckupComponentDetailsContainer } from '../../checkup_component'
+import { CheckupResultContainer, CheckupResultDetailsContainer } from '../../checkup_result'
 
 const AppRoutes = (): React.ReactElement => {
   return (
@@ -77,12 +78,6 @@ export const protectedRoutes: RoutesType[] = [
     path: '/checkup_component',
     display: 'Checkup Component',
     element: <CheckupComponentContainer />,
-    subroutes: [
-      {
-        path: ':id',
-        element: <CheckupComponentDetailsContainer />,
-      },
-    ],
   },
   {
     path: '/checkup_component_selected',
@@ -91,6 +86,21 @@ export const protectedRoutes: RoutesType[] = [
       {
         path: ':id',
         element: <CheckupComponentDetailsContainer />,
+      },
+    ],
+  },
+  {
+    path: '/checkup_result',
+    display: 'Checkup Result',
+    element: <CheckupResultContainer />,
+  },
+  {
+    path: '/checkup_result_selected',
+    element: <CheckupResultDetailsContainer />,
+    subroutes: [
+      {
+        path: ':id',
+        element: <CheckupResultDetailsContainer />,
       },
     ],
   },
