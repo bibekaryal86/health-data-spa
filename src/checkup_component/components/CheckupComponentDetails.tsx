@@ -202,7 +202,7 @@ const CheckupComponentDetails = (props: CheckupComponentDetailsProps): React.Rea
         handleCheckupComponentFieldChange(event, 'measureUnit', checkupComponentData, setCheckupComponentData)
       }
       value={checkupComponentData.measureUnit || ''}
-      maxLength={10}
+      maxLength={15}
     />
   )
 
