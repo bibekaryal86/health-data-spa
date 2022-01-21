@@ -4,8 +4,8 @@ export const ALERT_TYPE_SUCCESS = 'success'
 export const ALERT_TYPE_FAILURE = 'failure'
 export const ALERT_TYPE_INFO = 'info'
 
-export const TABLE_HEADER_DISPLAY_ONLY_SEPARATOR = '_display'
-export const TABLE_HEADER_EXPORT_ONLY_SEPARATOR = '_export'
+export const TABLE_DISPLAY_ONLY_SEPARATOR = '_display'
+export const TABLE_EXPORT_ONLY_SEPARATOR = '_export'
 export const TABLE_SORT_DIRECTION_ASCENDING = 'ASC'
 export const TABLE_SORT_DIRECTION_DESCENDING = 'DESC'
 export const TABLE_SORTED_ASC_CODE = 8657
