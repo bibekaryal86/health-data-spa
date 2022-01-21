@@ -22,7 +22,6 @@
   "license": "ISC",
   "homepage": "https://github.com/bibekaryal86/health-data-spa#readme",
   "dependencies": {
-    "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-csv": "^2.2.1",
     "react-dom": "^17.0.2",

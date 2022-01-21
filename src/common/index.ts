@@ -21,24 +21,12 @@ import { checkupCategoryOptions, checkupComponentOptions, inputFieldValue, stand
 // types
 import { Async, FetchOptions, FetchResponse } from './utils/fetch'
 import { LocalStorage } from './utils/localStorageHelper'
-import { getStartOfTheMonth, getStartOfTheYear } from './utils/momentHelper'
 import { SessionStorage } from './utils/sessionStorageHelper'
 import { resetSpinner, setSpinner, SpinnerState } from './utils/spinner'
 // exports
 export { Alert, Modal, Spinner }
 export { Button, Checkbox, HrefLink, Input, InputType, RadioButton, Select, Table, TextArea }
 export { spinner, alert }
-export {
-  setAlert,
-  resetAlert,
-  getEndpoint,
-  Async,
-  LocalStorage,
-  getStartOfTheMonth,
-  getStartOfTheYear,
-  SessionStorage,
-  setSpinner,
-  resetSpinner,
-}
+export { setAlert, resetAlert, getEndpoint, Async, LocalStorage, SessionStorage, setSpinner, resetSpinner }
 export { checkupCategoryOptions, checkupComponentOptions, inputFieldValue, standardValue }
 export type { FetchOptions, FetchResponse, AlertState, SpinnerState }
