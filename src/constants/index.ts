@@ -9,7 +9,7 @@ export const TABLE_SORT_DIRECTION_DESCENDING = 'DESC'
 export const TABLE_SORTED_ASC_CODE = 8657
 export const TABLE_SORTED_DESC_CODE = 8659
 export const TABLE_SORTED_NONE_CODE = 8205
-export const TABLE_EXPORT_KEYS_TO_AVOID = ['actions', 'Actions']
+export const TABLE_EXPORT_KEYS_TO_AVOID = ['actions', 'Actions', 'comments', 'Comments']
 export const TABLE_EXPORT_KEY_FOR_TITLE = 'title'
 export const TABLE_SORT_KEYS_TO_AVOID = ['Actions', 'Standard Range', 'Result', 'Comments']
 

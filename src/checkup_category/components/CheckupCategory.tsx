@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
 import { CheckupCategoryType, DefaultCheckupCategoryLocalState } from '../types/checkup.category.data.types'
-import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
+import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS, TABLE_SORT_KEYS_TO_AVOID } from '../../constants'
 import { DisplayCardWrapperBody } from '../../styles'
 import { Button, HrefLink, Input, Modal, Table } from '../../common'
 import checkupCategoryState from '../reducers/checkup.category.state.reducer'
@@ -113,7 +113,13 @@ const CheckupCategory = (props: CheckupCategoryProps): React.ReactElement => {
     </>
   )
 
-  const headers = ['Checkup Category', 'Actions']
+  const headersHeaders = ['Checkup Category', 'Actions']
+  const headers = Array.from(headersHeaders, (x) => {
+    return {
+      headerTitle: x,
+      isSortAllowed: !TABLE_SORT_KEYS_TO_AVOID.includes(x),
+    }
+  })
   const data = Array.from(checkupCategoryList, (x) => {
     return {
       description: x.categoryName,
@@ -123,7 +129,7 @@ const CheckupCategory = (props: CheckupCategoryProps): React.ReactElement => {
   const footer = `Number of Records: ${checkupCategoryList.length}`
 
   const showCheckupCategoryList = () => (
-    <Table title="Checkup Categories" headers={headers} data={data} footer={footer} isSortAllowed />
+    <Table title="Checkup Categories" headers={headers} data={data} footer={footer} />
   )
 
   const checkupCategoryModalBody = () =>

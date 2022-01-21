@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../app/context/AuthContext'
 import { DisplayCardWrapperBody } from '../../styles'
-import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
+import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS, TABLE_SORT_KEYS_TO_AVOID } from '../../constants'
 import { HrefLink, Modal, Table } from '../../common'
 import { CheckupResultType } from '../types/checkup.result.data.types'
 
@@ -95,7 +95,13 @@ const CheckupComponent = (props: CheckupResultProps): React.ReactElement => {
     [selectedComment],
   )
 
-  const headers = ['Category', 'Component', 'Date', 'Standard Range', 'Result', 'Flag', 'Actions', 'Comments']
+  const headersHeaders = ['Category', 'Component', 'Date', 'Standard Range', 'Result', 'Flag', 'Actions', 'Comments']
+  const headers = Array.from(headersHeaders, (x) => {
+    return {
+      headerTitle: x,
+      isSortAllowed: !TABLE_SORT_KEYS_TO_AVOID.includes(x),
+    }
+  })
   const data = Array.from(checkupResultList, (x) => {
     return {
       categoryName: x.checkupComponent?.checkupCategory?.categoryName || 'ERROR',
@@ -109,9 +115,7 @@ const CheckupComponent = (props: CheckupResultProps): React.ReactElement => {
     }
   })
   const footer = `Number of Records: ${checkupResultList.length}`
-  const showCheckupResultList = () => (
-    <Table title="Checkup Results" headers={headers} data={data} footer={footer} isSortAllowed />
-  )
+  const showCheckupResultList = () => <Table title="Checkup Results" headers={headers} data={data} footer={footer} />
 
   return (
     <>
