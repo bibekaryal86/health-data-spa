@@ -8,6 +8,7 @@ export interface CheckupComponentType {
   standardHigh?: string
   measureUnit?: string
   componentComments?: string
+  standardRange?: string
 }
 
 export interface CheckupComponentRequest {
