@@ -123,7 +123,7 @@ const CheckupCategory = (props: CheckupCategoryProps): React.ReactElement => {
   const footer = `Number of Records: ${checkupCategoryList.length}`
 
   const showCheckupCategoryList = () => (
-    <Table title="Checkup Categories" headers={headers} data={data} footer={footer} />
+    <Table title="Checkup Categories" headers={headers} data={data} footer={footer} isSortAllowed />
   )
 
   const checkupCategoryModalBody = () =>

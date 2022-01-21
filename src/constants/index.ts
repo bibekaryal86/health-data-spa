@@ -3,12 +3,6 @@ export const INPUT_REGEX_PATTERN = /^[A-Za-z0-9]+$/
 export const ALERT_TYPE_SUCCESS = 'success'
 export const ALERT_TYPE_FAILURE = 'failure'
 export const ALERT_TYPE_INFO = 'info'
-export const ALERT_TYPE_WARN = 'warn'
-
-export const checkBoxOptionsYesNo = [
-  { value: 'YES', text: 'YES' },
-  { value: 'NO', text: 'NO' },
-]
 
 export const TABLE_SORT_DIRECTION_ASCENDING = 'ASC'
 export const TABLE_SORT_DIRECTION_DESCENDING = 'DESC'
@@ -17,6 +11,7 @@ export const TABLE_SORTED_DESC_CODE = 8659
 export const TABLE_SORTED_NONE_CODE = 8205
 export const TABLE_EXPORT_KEYS_TO_AVOID = ['actions', 'Actions']
 export const TABLE_EXPORT_KEY_FOR_TITLE = 'title'
+export const TABLE_SORT_KEYS_TO_AVOID = ['Actions', 'Standard Range', 'Result', 'Comments']
 
 export const DATE_FORMAT_MATCHER_REGEX = new RegExp('[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}')
 export const CURRENCY_FORMAT_MATCHER_REGEX = new RegExp('^\\$|\\-\\$(\\d{1,3}(\\,\\d{3})*|(\\d+))(\\.\\d{1,2})?$')

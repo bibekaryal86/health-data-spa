@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { CSVLink } from 'react-csv'
 import { getCsvReport, getSortData, getSortedData } from '../utils/table'
-import { TABLE_EXPORT_KEYS_TO_AVOID, TABLE_SORTED_NONE_CODE } from '../../constants'
+import { TABLE_SORT_KEYS_TO_AVOID, TABLE_SORTED_NONE_CODE } from '../../constants'
 import { DisplayCardWrapperRow, DisplayCardWrapperBody } from '../../styles'
 
 const TableMaxWidthWrapper = styled.div.attrs({
@@ -143,9 +143,9 @@ const Table = (props: TableProps): React.ReactElement | null => {
                       key={key}
                       onClick={() => {
                         props.onHeaderClick && props.onHeaderClick(header)
-                        props.isSortAllowed && sortTableData(header, key)
+                        !TABLE_SORT_KEYS_TO_AVOID.includes(header) && props.isSortAllowed && sortTableData(header, key)
                       }}
-                      isSortAllowed={props.isSortAllowed && !TABLE_EXPORT_KEYS_TO_AVOID.includes(header)}
+                      isSortAllowed={props.isSortAllowed && !TABLE_SORT_KEYS_TO_AVOID.includes(header)}
                     >
                       {header}
                       {header === sortData.header && String.fromCharCode(sortData.sortedDirection)}

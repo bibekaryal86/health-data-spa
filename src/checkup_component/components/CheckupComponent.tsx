@@ -84,7 +84,7 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
   })
   const footer = `Number of Records: ${checkupComponentList.length}`
   const showCheckupComponentList = () => (
-    <Table title="Checkup Components" headers={headers} data={data} footer={footer} />
+    <Table title="Checkup Components" headers={headers} data={data} footer={footer} isSortAllowed />
   )
 
   return (
