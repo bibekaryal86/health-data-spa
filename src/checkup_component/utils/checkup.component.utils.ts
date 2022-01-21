@@ -25,7 +25,7 @@ export const checkupComponentReset = () => {
 export const validateCheckupComponent = (checkupComponent: CheckupComponentType): string => {
   let invalids = ''
 
-  if (!checkupComponent.componentName || checkupComponent.componentName.trim().length < 5) {
+  if (!checkupComponent.componentName || checkupComponent.componentName.trim().length < 3) {
     invalids += ' [Component Name] '
   }
 
