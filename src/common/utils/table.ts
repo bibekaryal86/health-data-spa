@@ -1,9 +1,10 @@
-import { SortData, TableData } from '../forms/Table'
+import { SortData, TableData, TableHeaderData } from '../forms/Table'
 import {
   CURRENCY_FORMAT_MATCHER_REGEX,
   DATE_FORMAT_MATCHER_REGEX,
   TABLE_EXPORT_KEY_FOR_TITLE,
-  TABLE_EXPORT_KEYS_TO_AVOID,
+  TABLE_DISPLAY_ONLY_SEPARATOR,
+  TABLE_EXPORT_ONLY_SEPARATOR,
   TABLE_SORT_DIRECTION_ASCENDING,
   TABLE_SORT_DIRECTION_DESCENDING,
   TABLE_SORTED_ASC_CODE,
@@ -24,7 +25,15 @@ interface CsvReport {
   filename: string
 }
 
-export function getCsvReport(tableHeaders: string[], tableData: TableData[], tableFilename?: string): CsvReport {
+export function getHeaderTitle(headerTitle: string, separator: string): string {
+  return headerTitle.split(separator)[0]
+}
+
+export function getCsvReport(
+  tableHeaders: TableHeaderData[],
+  tableData: TableData[],
+  tableFilename?: string,
+): CsvReport {
   const tableDataKeys = Object.keys(tableData[0]) as Array<string>
 
   return {
@@ -34,13 +43,13 @@ export function getCsvReport(tableHeaders: string[], tableData: TableData[], tab
   }
 }
 
-function getHeaders(tableHeaders: string[], tableDataKeys: string[]): CsvHeaders[] {
+function getHeaders(tableHeaders: TableHeaderData[], tableDataKeys: string[]): CsvHeaders[] {
   const csvHeaders: CsvHeaders[] = []
 
   tableHeaders.forEach((header, index) => {
-    !TABLE_EXPORT_KEYS_TO_AVOID.includes(tableDataKeys[index]) &&
+    !tableDataKeys[index].includes(TABLE_DISPLAY_ONLY_SEPARATOR) &&
       csvHeaders.push({
-        label: header,
+        label: getHeaderTitle(header.headerTitle, TABLE_EXPORT_ONLY_SEPARATOR),
         key: tableDataKeys[index],
       })
   })
@@ -54,7 +63,7 @@ function getData(tableData: TableData[], tableDataKeys: string[]): CsvData[] {
   tableData.forEach((data) => {
     const dataItem: CsvData = {}
     tableDataKeys.forEach((key) => {
-      if (!TABLE_EXPORT_KEYS_TO_AVOID.includes(key)) {
+      if (!key.includes(TABLE_DISPLAY_ONLY_SEPARATOR)) {
         dataItem[key] = getDataItemValue(data[key])
       }
     })

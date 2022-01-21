@@ -113,7 +113,13 @@ const CheckupCategory = (props: CheckupCategoryProps): React.ReactElement => {
     </>
   )
 
-  const headers = ['Checkup Category', 'Actions']
+  const headersHeaders = ['Checkup Category', 'Actions']
+  const headers = Array.from(headersHeaders, (x) => {
+    return {
+      headerTitle: x,
+      isSortAllowed: x !== 'Actions',
+    }
+  })
   const data = Array.from(checkupCategoryList, (x) => {
     return {
       description: x.categoryName,

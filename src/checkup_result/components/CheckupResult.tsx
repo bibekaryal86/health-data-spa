@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../app/context/AuthContext'
 import { DisplayCardWrapperBody } from '../../styles'
 import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
-import { HrefLink, Modal, standardValue, Table } from '../../common'
+import { HrefLink, Modal, Table } from '../../common'
 import { CheckupResultType } from '../types/checkup.result.data.types'
 
 interface CheckupResultProps {
@@ -95,23 +95,48 @@ const CheckupComponent = (props: CheckupResultProps): React.ReactElement => {
     [selectedComment],
   )
 
-  const headers = ['Category', 'Component', 'Date', 'Low', 'High', 'Unit', 'Result', 'Flag', 'Actions', 'Comments']
+  const headersHeaders = [
+    'Category',
+    'Component',
+    'Date',
+    'Standard Range',
+    'Result',
+    'Flag',
+    'Actions_display',
+    'Comments_display',
+    'Comments_export',
+  ]
+  const sortableHeaders = ['Category', 'Component', 'Date', 'Flag']
+  const headers = Array.from(headersHeaders, (x) => {
+    return {
+      headerTitle: x,
+      isSortAllowed: sortableHeaders.includes(x),
+    }
+  })
   const data = Array.from(checkupResultList, (x) => {
     return {
       categoryName: x.checkupComponent?.checkupCategory?.categoryName || 'ERROR',
       componentName: x.checkupComponent?.componentName || 'ERROR',
       checkupDate: x.checkupDate,
-      low: standardValue(x.checkupComponent.standardLow),
-      high: standardValue(x.checkupComponent.standardHigh),
-      unit: x.checkupComponent.measureUnit || '',
+      standardRange: x.checkupComponent.standardRange || '',
       testResult: x.testResult,
       resultFlag: x.resultFlag,
-      actions: actionLinks(x.id),
-      comments: x.checkupComponent.componentComments ? commentLink(x.checkupComponent.componentComments) : '',
+      actions_display: actionLinks(x.id),
+      comments_display: x.checkupComponent.componentComments ? commentLink(x.checkupComponent.componentComments) : '',
+      comments_export: x.checkupComponent.componentComments || '',
     }
   })
   const footer = `Number of Records: ${checkupResultList.length}`
-  const showCheckupResultList = () => <Table title="Checkup Results" headers={headers} data={data} footer={footer} />
+  const showCheckupResultList = () => (
+    <Table
+      title="Checkup Results"
+      headers={headers}
+      data={data}
+      footer={footer}
+      isExportToCsv
+      exportToCsvFileName="checkup_results.csv"
+    />
+  )
 
   return (
     <>
