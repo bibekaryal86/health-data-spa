@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../app/context/AuthContext'
 import { DisplayCardWrapperBody } from '../../styles'
 import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
-import { HrefLink, Modal, standardValue, Table } from '../../common'
+import { HrefLink, Modal, Table } from '../../common'
 import { CheckupResultType } from '../types/checkup.result.data.types'
 
 interface CheckupResultProps {
@@ -95,15 +95,13 @@ const CheckupComponent = (props: CheckupResultProps): React.ReactElement => {
     [selectedComment],
   )
 
-  const headers = ['Category', 'Component', 'Date', 'Low', 'High', 'Unit', 'Result', 'Flag', 'Actions', 'Comments']
+  const headers = ['Category', 'Component', 'Date', 'Standard Range', 'Result', 'Flag', 'Actions', 'Comments']
   const data = Array.from(checkupResultList, (x) => {
     return {
       categoryName: x.checkupComponent?.checkupCategory?.categoryName || 'ERROR',
       componentName: x.checkupComponent?.componentName || 'ERROR',
       checkupDate: x.checkupDate,
-      low: standardValue(x.checkupComponent.standardLow),
-      high: standardValue(x.checkupComponent.standardHigh),
-      unit: x.checkupComponent.measureUnit || '',
+      standardRange: x.checkupComponent.standardRange || '',
       testResult: x.testResult,
       resultFlag: x.resultFlag,
       actions: actionLinks(x.id),
