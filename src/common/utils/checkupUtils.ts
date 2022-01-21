@@ -9,8 +9,10 @@ export const checkupCategoryOptions = (checkupCategories: CheckupCategoryType[])
 }
 
 export const checkupComponentOptions = (checkupComponents: CheckupComponentType[]): SelectOptionProps[] => {
-  const selectOptions: SelectOptionProps[] = [{ text: 'Please Select', value: '' }]
+  const selectOptions: SelectOptionProps[] = []
   checkupComponents.forEach((component) => selectOptions.push({ text: component.componentName, value: component.id }))
+  selectOptions.sort((x, y) => (x.text < y.text ? -1 : 1))
+  selectOptions.splice(0, 0, { text: 'Please Select', value: '' })
   return selectOptions
 }
 
