@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
 import { CheckupCategoryType, DefaultCheckupCategoryLocalState } from '../types/checkup.category.data.types'
-import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS, TABLE_SORT_KEYS_TO_AVOID } from '../../constants'
+import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
 import { DisplayCardWrapperBody } from '../../styles'
 import { Button, HrefLink, Input, Modal, Table } from '../../common'
 import checkupCategoryState from '../reducers/checkup.category.state.reducer'
@@ -117,7 +117,7 @@ const CheckupCategory = (props: CheckupCategoryProps): React.ReactElement => {
   const headers = Array.from(headersHeaders, (x) => {
     return {
       headerTitle: x,
-      isSortAllowed: !TABLE_SORT_KEYS_TO_AVOID.includes(x),
+      isSortAllowed: x !== 'Actions',
     }
   })
   const data = Array.from(checkupCategoryList, (x) => {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DisplayCardWrapperBody } from '../../styles'
 import { CheckupComponentType } from '../types/checkup.component.data.types'
-import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS, TABLE_SORT_KEYS_TO_AVOID } from '../../constants'
+import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
 import { HrefLink, Table } from '../../common'
 
 interface CheckupComponentProps {
@@ -74,10 +74,11 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
   )
 
   const headersHeaders = ['Category Name', 'Component Name', 'Standard Range', 'Actions']
+  const doNotSortHeaders = ['Standard Range', 'Actions']
   const headers = Array.from(headersHeaders, (x) => {
     return {
       headerTitle: x,
-      isSortAllowed: !TABLE_SORT_KEYS_TO_AVOID.includes(x),
+      isSortAllowed: !doNotSortHeaders.includes(x),
     }
   })
   const data = Array.from(checkupComponentList, (x) => {

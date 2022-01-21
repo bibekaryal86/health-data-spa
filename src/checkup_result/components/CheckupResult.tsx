@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../app/context/AuthContext'
 import { DisplayCardWrapperBody } from '../../styles'
-import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS, TABLE_SORT_KEYS_TO_AVOID } from '../../constants'
+import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
 import { HrefLink, Modal, Table } from '../../common'
 import { CheckupResultType } from '../types/checkup.result.data.types'
 
@@ -95,11 +95,22 @@ const CheckupComponent = (props: CheckupResultProps): React.ReactElement => {
     [selectedComment],
   )
 
-  const headersHeaders = ['Category', 'Component', 'Date', 'Standard Range', 'Result', 'Flag', 'Actions', 'Comments']
+  const headersHeaders = [
+    'Category',
+    'Component',
+    'Date',
+    'Standard Range',
+    'Result',
+    'Flag',
+    'Actions_display',
+    'Comments_display',
+    'Comments_export',
+  ]
+  const sortableHeaders = ['Category', 'Component', 'Date', 'Flag']
   const headers = Array.from(headersHeaders, (x) => {
     return {
       headerTitle: x,
-      isSortAllowed: !TABLE_SORT_KEYS_TO_AVOID.includes(x),
+      isSortAllowed: sortableHeaders.includes(x),
     }
   })
   const data = Array.from(checkupResultList, (x) => {
@@ -110,12 +121,22 @@ const CheckupComponent = (props: CheckupResultProps): React.ReactElement => {
       standardRange: x.checkupComponent.standardRange || '',
       testResult: x.testResult,
       resultFlag: x.resultFlag,
-      actions: actionLinks(x.id),
-      comments: x.checkupComponent.componentComments ? commentLink(x.checkupComponent.componentComments) : '',
+      actions_display: actionLinks(x.id),
+      comments_display: x.checkupComponent.componentComments ? commentLink(x.checkupComponent.componentComments) : '',
+      comments_export: x.checkupComponent.componentComments || '',
     }
   })
   const footer = `Number of Records: ${checkupResultList.length}`
-  const showCheckupResultList = () => <Table title="Checkup Results" headers={headers} data={data} footer={footer} />
+  const showCheckupResultList = () => (
+    <Table
+      title="Checkup Results"
+      headers={headers}
+      data={data}
+      footer={footer}
+      isExportToCsv
+      exportToCsvFileName="checkup_results.csv"
+    />
+  )
 
   return (
     <>
