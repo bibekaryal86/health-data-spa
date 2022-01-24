@@ -1,29 +1,40 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { DisplayCardWrapperBody } from '../../styles'
-import { CheckupComponentType } from '../types/checkup.component.data.types'
+import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow } from '../../styles'
+import { CheckupComponentType, DefaultCheckupComponentState } from '../types/checkup.component.data.types'
 import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
-import { HrefLink, Table } from '../../common'
+import { checkupCategoryOptions, HrefLink, Select, Table } from '../../common'
+import { getCheckupComponentDisplayList } from '../utils/checkup.component.utils'
+import { CheckupCategoryType } from '../../checkup_category'
 
 interface CheckupComponentProps {
   errMsg: string
   success: string
   checkupComponentList: CheckupComponentType[]
+  checkupCategoryList: CheckupCategoryType[]
   setAlert: (type: string, messageKey: string) => void
   resetAlert: () => void
   checkupComponentReset: () => void
   checkupComponentFindAction: () => void
+  checkupCategoryFindAction: () => void
 }
 
 const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
+  const [categoryIdFilter, setCategoryIdFilter] = useState('')
+  const [checkupComponentDisplayList, setCheckupComponentDisplayList] = useState(
+    DefaultCheckupComponentState.checkupComponentList,
+  )
+
   const {
     errMsg,
     success,
     checkupComponentList,
+    checkupCategoryList,
     setAlert,
     resetAlert,
     checkupComponentReset,
     checkupComponentFindAction,
+    checkupCategoryFindAction,
   } = props
 
   useEffect(() => {
@@ -31,6 +42,12 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
       checkupComponentFindAction()
     }
   }, [checkupComponentFindAction, checkupComponentList.length])
+
+  useEffect(() => {
+    if (checkupCategoryList.length === 0) {
+      checkupCategoryFindAction()
+    }
+  }, [checkupCategoryFindAction, checkupCategoryList.length])
 
   useEffect(() => {
     errMsg && setAlert(ALERT_TYPE_FAILURE, errMsg)
@@ -44,12 +61,57 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
     }
   }, [checkupComponentReset, resetAlert])
 
+  useEffect(
+    () => setCheckupComponentDisplayList(getCheckupComponentDisplayList(categoryIdFilter, checkupComponentList)),
+    [categoryIdFilter, checkupComponentList],
+  )
+
   const navigate = useNavigate()
   const onClickToComponent = (id: string) => navigate(`/checkup_component_selected/${id}`)
 
   const showBodyHeader = () => (
     <DisplayCardWrapperBody background="slateblue" color="whitesmoke">
       <h4>Checkup Component</h4>
+    </DisplayCardWrapperBody>
+  )
+
+  const showCategoryFilterSelect = () => (
+    <Select
+      className="u-full-width"
+      id="filter-component-select-category"
+      label="Category"
+      onChange={(selected) => setCategoryIdFilter(selected)}
+      value={categoryIdFilter}
+      options={checkupCategoryOptions(checkupCategoryList)}
+    />
+  )
+
+  const clearFilterLink = () => (
+    <HrefLink
+      id="checkup-component-clear-filter-link"
+      linkTo="#"
+      title="Clear Filter"
+      onClick={() => setCategoryIdFilter('')}
+    />
+  )
+
+  const showFilterComponent = () => (
+    <DisplayCardWrapperBody id="checkup-component-filter-content">
+      <DisplayCardWrapperRow borderBtm fontWeight="bold">
+        Checkup Component Filters
+      </DisplayCardWrapperRow>
+      <DisplayCardWrapperBody container>
+        <DisplayCardWrapperRow container>
+          <DisplayCardWrapperColumn classname="four columns">{showCategoryFilterSelect()}</DisplayCardWrapperColumn>
+        </DisplayCardWrapperRow>
+        {categoryIdFilter ? (
+          <DisplayCardWrapperRow container>
+            <DisplayCardWrapperColumn classname="four columns">{clearFilterLink()}</DisplayCardWrapperColumn>
+          </DisplayCardWrapperRow>
+        ) : (
+          <React.Fragment />
+        )}
+      </DisplayCardWrapperBody>
     </DisplayCardWrapperBody>
   )
 
@@ -81,7 +143,7 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
       isSortAllowed: !doNotSortHeaders.includes(x),
     }
   })
-  const data = Array.from(checkupComponentList, (x) => {
+  const data = Array.from(checkupComponentDisplayList, (x) => {
     return {
       categoryName: x.checkupCategory.categoryName || 'ERROR',
       componentName: x.componentName,
@@ -89,7 +151,7 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
       actions: actionLinks(x.id),
     }
   })
-  const footer = `Number of Records: ${checkupComponentList.length}`
+  const footer = `Number of Records: ${checkupComponentDisplayList.length}`
   const showCheckupComponentList = () => (
     <Table title="Checkup Components" headers={headers} data={data} footer={footer} />
   )
@@ -97,6 +159,7 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
   return (
     <>
       {showBodyHeader()}
+      {showFilterComponent()}
       {showAddCheckupComponent()}
       {showCheckupComponentList()}
     </>

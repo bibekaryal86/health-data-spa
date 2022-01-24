@@ -36,6 +36,11 @@ export const validateCheckupComponent = (checkupComponent: CheckupComponentType)
   return invalids
 }
 
+export const getCheckupComponentDisplayList = (categoryId: string, checkupComponentList: CheckupComponentType[]) =>
+  categoryId
+    ? checkupComponentList.filter((checkupComponent) => checkupComponent.checkupCategory.id === categoryId)
+    : checkupComponentList
+
 export const checkupComponentsRequest = (type: string) => ({
   type,
 })
