@@ -1,6 +1,7 @@
 import { SelectOptionProps } from '../forms/Select'
 import { CheckupCategoryType } from '../../checkup_category'
 import { CheckupComponentType } from '../../checkup_component'
+import { CheckupResultType } from '../../checkup_result'
 
 export const checkupCategoryOptions = (checkupCategories: CheckupCategoryType[]): SelectOptionProps[] => {
   const selectOptions: SelectOptionProps[] = [{ text: 'Please Select', value: '' }]
@@ -9,8 +10,29 @@ export const checkupCategoryOptions = (checkupCategories: CheckupCategoryType[])
 }
 
 export const checkupComponentOptions = (checkupComponents: CheckupComponentType[]): SelectOptionProps[] => {
-  const selectOptions: SelectOptionProps[] = [{ text: 'Please Select', value: '' }]
+  const selectOptions: SelectOptionProps[] = []
   checkupComponents.forEach((component) => selectOptions.push({ text: component.componentName, value: component.id }))
+  selectOptions.sort((x, y) => (x.text < y.text ? -1 : 1))
+  selectOptions.splice(0, 0, { text: 'Please Select', value: '' })
+  return selectOptions
+}
+
+export const resultFlagOptions = (): SelectOptionProps[] => [
+  { text: 'Please Select', value: '' },
+  { text: 'High', value: 'H' },
+  { text: 'Low', value: 'L' },
+]
+
+export const checkupDateOptions = (checkupResults: CheckupResultType[]): SelectOptionProps[] => {
+  const checkupDates: string[] = checkupResults.map((result) => result.checkupDate)
+  const uniqueCheckupDates = [...new Set(checkupDates)]
+
+  const selectOptions: SelectOptionProps[] = []
+  uniqueCheckupDates.forEach((uniqueCheckupDate) =>
+    selectOptions.push({ text: uniqueCheckupDate, value: uniqueCheckupDate }),
+  )
+  selectOptions.sort((x, y) => (x.text < y.text ? 1 : -1))
+  selectOptions.splice(0, 0, { text: 'Please Select', value: '' })
   return selectOptions
 }
 

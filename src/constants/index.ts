@@ -71,4 +71,11 @@ export const ALERT_MESSAGES = new Map([
   [MSG_KEY_CHECKUP_COMPONENT_UPDATE_SUCCESS, 'Checkup Component Update Success!!!'],
   [MSG_KEY_CHECKUP_COMPONENT_DELETE_ERROR, 'Error Deleting Checkup Component! Please Try Again!!!'],
   [MSG_KEY_CHECKUP_COMPONENT_DELETE_SUCCESS, 'Checkup Component Delete Success!!!'],
+  [MSG_KEY_CHECKUP_RESULT_FIND_ERROR, 'Error Retrieving Checkup Results! Please Try Again!!!'],
+  [MSG_KEY_CHECKUP_RESULT_INSERT_ERROR, 'Error Inserting Checkup Result! Please Try Again!!!'],
+  [MSG_KEY_CHECKUP_RESULT_INSERT_SUCCESS, 'Checkup Result Insert Success!!!'],
+  [MSG_KEY_CHECKUP_RESULT_UPDATE_ERROR, 'Error Updating Checkup Result! Please Try Again!!!'],
+  [MSG_KEY_CHECKUP_RESULT_UPDATE_SUCCESS, 'Checkup Result Update Success!!!'],
+  [MSG_KEY_CHECKUP_RESULT_DELETE_ERROR, 'Error Deleting Checkup Result! Please Try Again!!!'],
+  [MSG_KEY_CHECKUP_RESULT_DELETE_SUCCESS, 'Checkup Result Delete Success!!!'],
 ])

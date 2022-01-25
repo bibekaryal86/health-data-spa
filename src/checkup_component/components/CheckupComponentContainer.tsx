@@ -5,6 +5,7 @@ import CheckupComponent from './CheckupComponent'
 import { CheckupComponentState } from '../types/checkup.component.data.types'
 import { checkupComponentReset } from '../utils/checkup.component.utils'
 import { checkupComponentFindAction } from '../actions/checkup.component.find.action'
+import { checkupCategoryFindAction } from '../../checkup_category'
 
 const mapStateToProps = ({ checkupCategory, checkupComponent }: GlobalState): CheckupComponentState => {
   return {
@@ -21,6 +22,7 @@ const mapDispatchToProps = {
   resetAlert: () => resetAlert(),
   checkupComponentReset: () => checkupComponentReset(),
   checkupComponentFindAction: () => checkupComponentFindAction(),
+  checkupCategoryFindAction: () => checkupCategoryFindAction(),
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckupComponent)

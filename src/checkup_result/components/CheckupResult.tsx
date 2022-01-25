@@ -1,38 +1,87 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../app/context/AuthContext'
-import { DisplayCardWrapperBody } from '../../styles'
+import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow } from '../../styles'
 import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
-import { HrefLink, Modal, Table } from '../../common'
-import { CheckupResultType } from '../types/checkup.result.data.types'
+import {
+  checkupCategoryOptions,
+  checkupComponentOptions,
+  checkupDateOptions,
+  HrefLink,
+  Modal,
+  resultFlagOptions,
+  Select,
+  Table,
+} from '../../common'
+import {
+  CheckupResultType,
+  DefaultCheckupResultFilter,
+  DefaultCheckupResultState,
+} from '../types/checkup.result.data.types'
+import {
+  getCheckupResultDisplayList,
+  isCheckupResultFilterApplied,
+  setCheckupResultFiltersValue,
+} from '../utils/checkup.result.utils'
+import { CheckupComponentType } from '../../checkup_component'
+import { CheckupCategoryType } from '../../checkup_category'
 
 interface CheckupResultProps {
   errMsg: string
   success: string
   checkupResultList: CheckupResultType[]
+  checkupComponentList: CheckupComponentType[]
+  checkupCategoryList: CheckupCategoryType[]
   setAlert: (type: string, messageKey: string) => void
   resetAlert: () => void
   checkupResultReset: () => void
   checkupResultFindAction: (username: string) => void
+  checkupComponentFindAction: () => void
+  checkupCategoryFindAction: () => void
 }
 
 const CheckupComponent = (props: CheckupResultProps): React.ReactElement => {
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false)
   const [selectedComment, setSelectedComment] = useState('')
+  const [checkupResultFilters, setCheckupResultFilters] = useState(DefaultCheckupResultFilter)
+  const [checkupResultDisplayList, setCheckupResultDisplayList] = useState(DefaultCheckupResultState.checkupResultList)
   const [username, setUsername] = useState('')
   const authContext = useContext(AuthContext)
   useEffect(() => {
     setUsername(authContext.auth?.userDetails?.username)
   }, [authContext.auth?.userDetails?.username])
 
-  const { errMsg, success, checkupResultList, setAlert, resetAlert, checkupResultReset, checkupResultFindAction } =
-    props
+  const {
+    errMsg,
+    success,
+    checkupResultList,
+    checkupComponentList,
+    checkupCategoryList,
+    setAlert,
+    resetAlert,
+    checkupResultReset,
+    checkupResultFindAction,
+    checkupComponentFindAction,
+    checkupCategoryFindAction,
+  } = props
 
   useEffect(() => {
     if (checkupResultList.length === 0) {
       username && checkupResultFindAction(username)
     }
   }, [checkupResultFindAction, checkupResultList.length, username])
+
+  useEffect(() => {
+    if (checkupComponentList.length === 0) {
+      checkupComponentFindAction()
+    }
+  }, [checkupComponentFindAction, checkupComponentList.length])
+
+  useEffect(() => {
+    if (checkupCategoryList.length === 0) {
+      checkupCategoryFindAction()
+    }
+  }, [checkupCategoryFindAction, checkupCategoryList.length])
 
   useEffect(() => {
     errMsg && setAlert(ALERT_TYPE_FAILURE, errMsg)
@@ -52,6 +101,95 @@ const CheckupComponent = (props: CheckupResultProps): React.ReactElement => {
   const showBodyHeader = () => (
     <DisplayCardWrapperBody background="slateblue" color="whitesmoke">
       <h4>Checkup Result</h4>
+    </DisplayCardWrapperBody>
+  )
+
+  const isFilterApplied = useMemo(() => isCheckupResultFilterApplied(checkupResultFilters), [checkupResultFilters])
+
+  useEffect(() => {
+    isFilterApplied
+      ? setCheckupResultDisplayList(getCheckupResultDisplayList(checkupResultFilters, checkupResultList))
+      : setCheckupResultDisplayList(checkupResultList)
+  }, [checkupResultFilters, checkupResultList, isFilterApplied])
+
+  const onChangeFilter = (selectedFilter: string, selectedValue: string) =>
+    setCheckupResultFilters(setCheckupResultFiltersValue(checkupResultFilters, selectedFilter, selectedValue))
+
+  const showCategoryFilterSelect = () => (
+    <Select
+      className="u-full-width"
+      id="checkup-result-filter-category-select"
+      label="Checkup Category"
+      onChange={(event) => onChangeFilter('checkupCategory', event)}
+      value={checkupResultFilters.categoryId}
+      options={checkupCategoryOptions(checkupCategoryList)}
+    />
+  )
+
+  const showComponentFilterSelect = () => (
+    <Select
+      className="u-full-width"
+      id="checkup-result-filter-component-select"
+      label="Checkup Component"
+      onChange={(event) => onChangeFilter('checkupComponent', event)}
+      value={checkupResultFilters.componentId}
+      options={checkupComponentOptions(checkupComponentList)}
+    />
+  )
+
+  const showCheckupDateSelect = () => (
+    <Select
+      className="u-full-width"
+      id="checkup-result-filter-date-select"
+      label="Checkup Date"
+      onChange={(event) => onChangeFilter('checkupDate', event)}
+      value={checkupResultFilters.checkupDate}
+      options={checkupDateOptions(checkupResultList)}
+    />
+  )
+
+  const showResultFlagSelect = () => (
+    <Select
+      className="u-full-width"
+      id="checkup-result-filter-flag-select"
+      label="Result Flag"
+      onChange={(event) => onChangeFilter('resultFlag', event)}
+      value={checkupResultFilters.resultFlag}
+      options={resultFlagOptions()}
+    />
+  )
+
+  const clearFilterLink = () => (
+    <HrefLink
+      id="checkup-result-clear-filter-link"
+      linkTo="#"
+      title="Clear Filter"
+      onClick={() => setCheckupResultFilters(DefaultCheckupResultFilter)}
+    />
+  )
+
+  const showFilterCheckupResult = () => (
+    <DisplayCardWrapperBody id="checkup-result-filter-content">
+      <DisplayCardWrapperRow borderBtm fontWeight="bold">
+        Checkup Result Filters
+      </DisplayCardWrapperRow>
+      <DisplayCardWrapperBody container>
+        <DisplayCardWrapperRow container>
+          <DisplayCardWrapperColumn classname="six columns">{showCategoryFilterSelect()}</DisplayCardWrapperColumn>
+          <DisplayCardWrapperColumn classname="six columns">{showComponentFilterSelect()}</DisplayCardWrapperColumn>
+        </DisplayCardWrapperRow>
+        <DisplayCardWrapperRow container>
+          <DisplayCardWrapperColumn classname="six columns">{showCheckupDateSelect()}</DisplayCardWrapperColumn>
+          <DisplayCardWrapperColumn classname="six columns">{showResultFlagSelect()}</DisplayCardWrapperColumn>
+        </DisplayCardWrapperRow>
+        {isFilterApplied ? (
+          <DisplayCardWrapperRow container>
+            <DisplayCardWrapperColumn classname="six columns">{clearFilterLink()}</DisplayCardWrapperColumn>
+          </DisplayCardWrapperRow>
+        ) : (
+          <React.Fragment />
+        )}
+      </DisplayCardWrapperBody>
     </DisplayCardWrapperBody>
   )
 
@@ -113,7 +251,7 @@ const CheckupComponent = (props: CheckupResultProps): React.ReactElement => {
       isSortAllowed: sortableHeaders.includes(x),
     }
   })
-  const data = Array.from(checkupResultList, (x) => {
+  const data = Array.from(checkupResultDisplayList, (x) => {
     return {
       categoryName: x.checkupComponent?.checkupCategory?.categoryName || 'ERROR',
       componentName: x.checkupComponent?.componentName || 'ERROR',
@@ -141,6 +279,7 @@ const CheckupComponent = (props: CheckupResultProps): React.ReactElement => {
   return (
     <>
       {showBodyHeader()}
+      {showFilterCheckupResult()}
       {showAddCheckupResult()}
       {showCheckupResultList()}
       {isCommentModalOpen && commentModal()}
