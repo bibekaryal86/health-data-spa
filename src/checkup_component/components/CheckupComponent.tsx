@@ -130,7 +130,7 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
     <HrefLink
       id="checkup-component-action-href-link"
       linkTo="#"
-      title="Click Here to View Details"
+      title="View Details"
       onClick={() => onClickToComponent(id)}
     />
   )
