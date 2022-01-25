@@ -1,7 +1,12 @@
 import React from 'react'
 import { GlobalDispatch } from '../../app/store/redux'
 import { inputFieldValue } from '../../common'
-import { CheckupResultDetailsAction, CheckupResultType, CheckupResultUpdate } from '../types/checkup.result.data.types'
+import {
+  CheckupResultDetailsAction,
+  CheckupResultFilters,
+  CheckupResultType,
+  CheckupResultUpdate,
+} from '../types/checkup.result.data.types'
 import {
   CHECKUP_RESULT_COMPLETE,
   CHECKUP_RESULT_FIND_SUCCESS,
@@ -35,6 +40,88 @@ export const validateCheckupResult = (checkupResult: CheckupResultType): string 
   }
 
   return invalids
+}
+
+export const isCheckupResultFilterApplied = (checkupResultFilters: CheckupResultFilters): string => {
+  let appliedFilters = ''
+
+  if (checkupResultFilters) {
+    if (checkupResultFilters.categoryId) {
+      appliedFilters += ' [CHECKUP CATEGORY] '
+    }
+
+    if (checkupResultFilters.componentId) {
+      appliedFilters += ' [CHECKUP COMPONENT] '
+    }
+
+    if (checkupResultFilters.checkupDate) {
+      appliedFilters += ' [CHECKUP DATE] '
+    }
+
+    if (checkupResultFilters.resultFlag) {
+      appliedFilters += ' [RESULT FLAG] '
+    }
+  }
+
+  return appliedFilters
+}
+
+export const setCheckupResultFiltersValue = (
+  valueBefore: CheckupResultFilters,
+  selectedFilter: string,
+  selectedValue: string,
+): CheckupResultFilters => {
+  let valueAfter = valueBefore
+
+  switch (selectedFilter) {
+    case 'checkupCategory':
+      valueAfter = { ...valueAfter, categoryId: selectedValue }
+      break
+    case 'checkupComponent':
+      valueAfter = { ...valueAfter, componentId: selectedValue }
+      break
+    case 'checkupDate':
+      valueAfter = { ...valueAfter, checkupDate: selectedValue }
+      break
+    case 'resultFlag':
+      valueAfter = { ...valueAfter, resultFlag: selectedValue }
+      break
+  }
+
+  return valueAfter
+}
+
+export const getCheckupResultDisplayList = (
+  checkupResultFilters: CheckupResultFilters,
+  checkupResultList: CheckupResultType[],
+): CheckupResultType[] => {
+  let checkupResultDisplayList = checkupResultList
+
+  if (checkupResultFilters.categoryId) {
+    checkupResultDisplayList = checkupResultDisplayList.filter(
+      (checkupResult) => checkupResult.checkupComponent.checkupCategory.id === checkupResultFilters.categoryId,
+    )
+  }
+
+  if (checkupResultFilters.componentId) {
+    checkupResultDisplayList = checkupResultDisplayList.filter(
+      (checkupResult) => checkupResult.checkupComponent.id === checkupResultFilters.componentId,
+    )
+  }
+
+  if (checkupResultFilters.checkupDate) {
+    checkupResultDisplayList = checkupResultDisplayList.filter(
+      (checkupResult) => checkupResult.checkupDate === checkupResultFilters.checkupDate,
+    )
+  }
+
+  if (checkupResultFilters.resultFlag) {
+    checkupResultDisplayList = checkupResultDisplayList.filter(
+      (checkupResult) => checkupResult.resultFlag === checkupResultFilters.resultFlag,
+    )
+  }
+
+  return checkupResultDisplayList
 }
 
 export const checkupResultsRequest = (type: string) => ({

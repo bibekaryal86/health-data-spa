@@ -44,6 +44,13 @@ export interface CheckupResultUpdate {
   testResult: string
 }
 
+export interface CheckupResultFilters {
+  categoryId: string
+  componentId: string
+  checkupDate: string
+  resultFlag: string
+}
+
 export const DefaultCheckupResult: CheckupResultType = {
   id: '',
   username: '',
@@ -60,4 +67,11 @@ export const DefaultCheckupResultState: CheckupResultState = {
   selectedCheckupResult: DefaultCheckupResult,
   checkupCategoryList: [],
   checkupComponentList: [],
+}
+
+export const DefaultCheckupResultFilter: CheckupResultFilters = {
+  categoryId: '',
+  componentId: '',
+  checkupDate: '',
+  resultFlag: '',
 }

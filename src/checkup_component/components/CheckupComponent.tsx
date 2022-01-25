@@ -79,7 +79,7 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
     <Select
       className="u-full-width"
       id="filter-component-select-category"
-      label="Category"
+      label="Checkup Category"
       onChange={(selected) => setCategoryIdFilter(selected)}
       value={categoryIdFilter}
       options={checkupCategoryOptions(checkupCategoryList)}
@@ -95,7 +95,7 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
     />
   )
 
-  const showFilterComponent = () => (
+  const showFilterCheckupComponent = () => (
     <DisplayCardWrapperBody id="checkup-component-filter-content">
       <DisplayCardWrapperRow borderBtm fontWeight="bold">
         Checkup Component Filters
@@ -159,7 +159,7 @@ const CheckupComponent = (props: CheckupComponentProps): React.ReactElement => {
   return (
     <>
       {showBodyHeader()}
-      {showFilterComponent()}
+      {showFilterCheckupComponent()}
       {showAddCheckupComponent()}
       {showCheckupComponentList()}
     </>

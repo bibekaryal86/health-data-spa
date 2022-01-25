@@ -17,7 +17,14 @@ import alert from './reducers/alert.reducer'
 // utils
 import { AlertState, resetAlert, setAlert } from './utils/alerts'
 import { getEndpoint } from './utils/endpoint'
-import { checkupCategoryOptions, checkupComponentOptions, inputFieldValue, standardValue } from './utils/checkupUtils'
+import {
+  checkupCategoryOptions,
+  checkupComponentOptions,
+  checkupDateOptions,
+  inputFieldValue,
+  resultFlagOptions,
+  standardValue,
+} from './utils/checkupUtils'
 // types
 import { Async, FetchOptions, FetchResponse } from './utils/fetch'
 import { LocalStorage } from './utils/localStorageHelper'
@@ -28,5 +35,12 @@ export { Alert, Modal, Spinner }
 export { Button, Checkbox, HrefLink, Input, InputType, RadioButton, Select, Table, TextArea }
 export { spinner, alert }
 export { setAlert, resetAlert, getEndpoint, Async, LocalStorage, SessionStorage, setSpinner, resetSpinner }
-export { checkupCategoryOptions, checkupComponentOptions, inputFieldValue, standardValue }
+export {
+  checkupCategoryOptions,
+  checkupComponentOptions,
+  checkupDateOptions,
+  inputFieldValue,
+  resultFlagOptions,
+  standardValue,
+}
 export type { FetchOptions, FetchResponse, AlertState, SpinnerState }
