@@ -1,23 +1,24 @@
 import React from 'react'
+
 import { GlobalDispatch } from '../../app/store/redux'
+import { Async, FetchOptions, getEndpoint } from '../../common'
+import { MSG_KEY_CHECKUP_COMPONENT_UPDATE_ERROR, MSG_KEY_CHECKUP_COMPONENT_UPDATE_SUCCESS } from '../../constants'
+import {
+  CHECKUP_COMPONENT_UPDATE_FAILURE,
+  CHECKUP_COMPONENT_UPDATE_REQUEST,
+  CHECKUP_COMPONENT_UPDATE_SUCCESS,
+} from '../types/checkup.component.action.types'
+import {
+  CheckupComponentRequest,
+  CheckupComponentResponse,
+  CheckupComponentType,
+} from '../types/checkup.component.data.types'
 import {
   checkupComponentsComplete,
   checkupComponentsFailure,
   checkupComponentsRequest,
   checkupComponentsSuccess,
 } from '../utils/checkup.component.utils'
-import {
-  CheckupComponentRequest,
-  CheckupComponentResponse,
-  CheckupComponentType,
-} from '../types/checkup.component.data.types'
-import { Async, FetchOptions, getEndpoint } from '../../common'
-import {
-  CHECKUP_COMPONENT_UPDATE_FAILURE,
-  CHECKUP_COMPONENT_UPDATE_REQUEST,
-  CHECKUP_COMPONENT_UPDATE_SUCCESS,
-} from '../types/checkup.component.action.types'
-import { MSG_KEY_CHECKUP_COMPONENT_UPDATE_ERROR, MSG_KEY_CHECKUP_COMPONENT_UPDATE_SUCCESS } from '../../constants'
 
 export const checkupComponentUpdateAction = (id: string, checkupComponent: CheckupComponentType) => {
   return async (dispatch: React.Dispatch<GlobalDispatch>): Promise<void> => {

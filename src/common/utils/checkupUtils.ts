@@ -1,7 +1,7 @@
-import { SelectOptionProps } from '../forms/Select'
 import { CheckupCategoryType } from '../../checkup_category'
 import { CheckupComponentType } from '../../checkup_component'
 import { CheckupResultType } from '../../checkup_result'
+import { SelectOptionProps } from '../forms/Select'
 
 export const checkupCategoryOptions = (checkupCategories: CheckupCategoryType[]): SelectOptionProps[] => {
   const selectOptions: SelectOptionProps[] = [{ text: 'Please Select', value: '' }]

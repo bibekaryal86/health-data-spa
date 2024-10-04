@@ -12,11 +12,10 @@ import Select from './forms/Select'
 import Table from './forms/Table'
 import TextArea from './forms/TextArea'
 // reducers
-import spinner from './reducers/spinner.reducer'
 import alert from './reducers/alert.reducer'
+import spinner from './reducers/spinner.reducer'
 // utils
 import { AlertState, resetAlert, setAlert } from './utils/alerts'
-import { getEndpoint } from './utils/endpoint'
 import {
   checkupCategoryOptions,
   checkupComponentOptions,
@@ -25,6 +24,7 @@ import {
   resultFlagOptions,
   standardValue,
 } from './utils/checkupUtils'
+import { getEndpoint } from './utils/endpoint'
 // types
 import { Async, FetchOptions, FetchResponse } from './utils/fetch'
 import { LocalStorage } from './utils/localStorageHelper'

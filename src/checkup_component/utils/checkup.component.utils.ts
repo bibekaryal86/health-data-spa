@@ -1,17 +1,18 @@
 import React from 'react'
+
 import { GlobalDispatch } from '../../app/store/redux'
 import { inputFieldValue } from '../../common'
-import {
-  CheckupComponentDetailsAction,
-  CheckupComponentType,
-  CheckupComponentUpdate,
-} from '../types/checkup.component.data.types'
 import {
   CHECKUP_COMPONENT_COMPLETE,
   CHECKUP_COMPONENT_FIND_SUCCESS,
   CHECKUP_COMPONENT_SELECT_COMPONENT,
   CHECKUP_COMPONENT_UNMOUNT,
 } from '../types/checkup.component.action.types'
+import {
+  CheckupComponentDetailsAction,
+  CheckupComponentType,
+  CheckupComponentUpdate,
+} from '../types/checkup.component.data.types'
 
 export const checkupComponentReset = () => {
   return async (dispatch: React.Dispatch<GlobalDispatch>): Promise<void> => {

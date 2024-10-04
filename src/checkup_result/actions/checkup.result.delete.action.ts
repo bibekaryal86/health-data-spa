@@ -1,19 +1,20 @@
 import React from 'react'
+
 import { GlobalDispatch } from '../../app/store/redux'
+import { Async, FetchOptions, getEndpoint } from '../../common'
+import { MSG_KEY_CHECKUP_RESULT_DELETE_ERROR, MSG_KEY_CHECKUP_RESULT_DELETE_SUCCESS } from '../../constants'
+import {
+  CHECKUP_RESULT_DELETE_FAILURE,
+  CHECKUP_RESULT_DELETE_REQUEST,
+  CHECKUP_RESULT_DELETE_SUCCESS,
+} from '../types/checkup.result.action.types'
+import { CheckupResultResponse } from '../types/checkup.result.data.types'
 import {
   checkupResultsComplete,
   checkupResultsFailure,
   checkupResultsRequest,
   checkupResultsSuccess,
 } from '../utils/checkup.result.utils'
-import { CheckupResultResponse } from '../types/checkup.result.data.types'
-import { Async, FetchOptions, getEndpoint } from '../../common'
-import {
-  CHECKUP_RESULT_DELETE_FAILURE,
-  CHECKUP_RESULT_DELETE_REQUEST,
-  CHECKUP_RESULT_DELETE_SUCCESS,
-} from '../types/checkup.result.action.types'
-import { MSG_KEY_CHECKUP_RESULT_DELETE_ERROR, MSG_KEY_CHECKUP_RESULT_DELETE_SUCCESS } from '../../constants'
 
 export const checkupResultDeleteAction = (id: string) => {
   return async (dispatch: React.Dispatch<GlobalDispatch>): Promise<void> => {

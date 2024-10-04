@@ -1,9 +1,4 @@
 import {
-  CheckupCategoryLocalAction,
-  CheckupCategoryLocalState,
-  DefaultCheckupCategoryLocalState,
-} from '../types/checkup.category.data.types'
-import {
   CHECKUP_CATEGORY_MODAL_CLOSE,
   CHECKUP_CATEGORY_MODAL_DELETE,
   CHECKUP_CATEGORY_MODAL_INPUT,
@@ -11,6 +6,11 @@ import {
   CHECKUP_CATEGORY_MODAL_UPDATE,
   CHECKUP_CATEGORY_SELECT_CATEGORY,
 } from '../types/checkup.category.action.types'
+import {
+  CheckupCategoryLocalAction,
+  CheckupCategoryLocalState,
+  DefaultCheckupCategoryLocalState,
+} from '../types/checkup.category.data.types'
 
 const getDefaultString = (input: string | undefined) => input || ''
 const getDefaultBoolean = (input: boolean | undefined) => input || false

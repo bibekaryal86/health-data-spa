@@ -1,10 +1,10 @@
 // reducers
-import checkupComponent from './reducers/checkup.component.reducer'
 // actions
 import { checkupComponentFindAction } from './actions/checkup.component.find.action'
 // components
 import CheckupComponentContainer from './components/CheckupComponentContainer'
 import CheckupComponentDetailsContainer from './components/CheckupComponentDetailsContainer'
+import checkupComponent from './reducers/checkup.component.reducer'
 // types
 import {
   CheckupComponentState,

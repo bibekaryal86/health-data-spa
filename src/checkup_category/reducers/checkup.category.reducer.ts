@@ -1,9 +1,4 @@
 import {
-  CheckupCategoryAction,
-  CheckupCategoryState,
-  DefaultCheckupCategoryState,
-} from '../types/checkup.category.data.types'
-import {
   CHECKUP_CATEGORY_DELETE_FAILURE,
   CHECKUP_CATEGORY_DELETE_SUCCESS,
   CHECKUP_CATEGORY_FIND_FAILURE,
@@ -15,6 +10,11 @@ import {
   CHECKUP_CATEGORY_UPDATE_FAILURE,
   CHECKUP_CATEGORY_UPDATE_SUCCESS,
 } from '../types/checkup.category.action.types'
+import {
+  CheckupCategoryAction,
+  CheckupCategoryState,
+  DefaultCheckupCategoryState,
+} from '../types/checkup.category.data.types'
 
 export default function checkupCategory(
   state = DefaultCheckupCategoryState,

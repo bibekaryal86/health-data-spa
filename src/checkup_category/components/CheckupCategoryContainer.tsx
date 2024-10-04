@@ -1,13 +1,14 @@
 import { connect } from 'react-redux'
+
+import CheckupCategory from './CheckupCategory'
 import { GlobalState } from '../../app/store/redux'
 import { resetAlert, setAlert } from '../../common'
-import { CheckupCategoryState } from '../types/checkup.category.data.types'
-import { checkupCategoryReset } from '../utils/checkup.category.utils'
+import { checkupCategoryDeleteAction } from '../actions/checkup.category.delete.action'
 import { checkupCategoryFindAction } from '../actions/checkup.category.find.action'
 import { checkupCategoryInsertAction } from '../actions/checkup.category.insert.action'
 import { checkupCategoryUpdateAction } from '../actions/checkup.category.update.action'
-import { checkupCategoryDeleteAction } from '../actions/checkup.category.delete.action'
-import CheckupCategory from './CheckupCategory'
+import { CheckupCategoryState } from '../types/checkup.category.data.types'
+import { checkupCategoryReset } from '../utils/checkup.category.utils'
 
 const mapStateToProps = ({ checkupCategory }: GlobalState): CheckupCategoryState => {
   return {

@@ -1,14 +1,15 @@
 import React from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+
 import LoginContainer from './LoginContainer'
-import NotFound from './NotFound'
 import LogoutContainer from './LogoutContainer'
-import { RoutesType } from '../types/routes.data.types'
-import { LocalStorage } from '../../common'
-import { Home } from '../../home'
+import NotFound from './NotFound'
 import { CheckupCategoryContainer } from '../../checkup_category'
 import { CheckupComponentContainer, CheckupComponentDetailsContainer } from '../../checkup_component'
 import { CheckupResultContainer, CheckupResultDetailsContainer } from '../../checkup_result'
+import { LocalStorage } from '../../common'
+import { Home } from '../../home'
+import { RoutesType } from '../types/routes.data.types'
 
 const AppRoutes = (): React.ReactElement => {
   return (
