@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+
 import { AuthContext } from '../../app/context/AuthContext'
-import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow } from '../../styles'
-import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
-import { Button, checkupComponentOptions, HrefLink, Input, InputType, Modal, Select } from '../../common'
 import { CheckupCategoryType } from '../../checkup_category'
 import { CheckupComponentType } from '../../checkup_component'
-import { CheckupResultType, DefaultCheckupResult } from '../types/checkup.result.data.types'
+import { Button, checkupComponentOptions, HrefLink, Input, InputType, Modal, Select } from '../../common'
+import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
+import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow } from '../../styles'
 import checkupResultDetails from '../reducers/checkup.result.details.reducer'
+import { CheckupResultType, DefaultCheckupResult } from '../types/checkup.result.data.types'
 import { handleCheckupResultFieldChange, validateCheckupResult } from '../utils/checkup.result.utils'
 
 interface CheckupResultDetailsProps {

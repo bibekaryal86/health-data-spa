@@ -1,10 +1,4 @@
 import {
-  CheckupResultAction,
-  CheckupResultState,
-  DefaultCheckupResult,
-  DefaultCheckupResultState,
-} from '../types/checkup.result.data.types'
-import {
   CHECKUP_RESULT_DELETE_FAILURE,
   CHECKUP_RESULT_DELETE_SUCCESS,
   CHECKUP_RESULT_FIND_FAILURE,
@@ -17,6 +11,12 @@ import {
   CHECKUP_RESULT_UPDATE_FAILURE,
   CHECKUP_RESULT_UPDATE_SUCCESS,
 } from '../types/checkup.result.action.types'
+import {
+  CheckupResultAction,
+  CheckupResultState,
+  DefaultCheckupResult,
+  DefaultCheckupResultState,
+} from '../types/checkup.result.data.types'
 
 export default function checkupResult(
   state = DefaultCheckupResultState,

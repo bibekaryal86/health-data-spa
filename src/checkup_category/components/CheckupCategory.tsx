@@ -1,9 +1,10 @@
 import React, { useEffect, useReducer } from 'react'
-import { CheckupCategoryType, DefaultCheckupCategoryLocalState } from '../types/checkup.category.data.types'
+
+import { Button, HrefLink, Input, Modal, Table } from '../../common'
 import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
 import { DisplayCardWrapperBody } from '../../styles'
-import { Button, HrefLink, Input, Modal, Table } from '../../common'
 import checkupCategoryState from '../reducers/checkup.category.state.reducer'
+import { CheckupCategoryType, DefaultCheckupCategoryLocalState } from '../types/checkup.category.data.types'
 import {
   setCheckupCategoriesDeleteModalOpen,
   setCheckupCategoriesInsertModalOpen,

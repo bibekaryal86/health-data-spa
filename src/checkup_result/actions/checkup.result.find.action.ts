@@ -1,5 +1,10 @@
 import React from 'react'
+
 import { GlobalDispatch, GlobalState } from '../../app/store/redux'
+import { Async, FetchOptions, getEndpoint } from '../../common'
+import { MSG_KEY_CHECKUP_RESULT_FIND_ERROR } from '../../constants'
+import { CHECKUP_RESULT_FIND_FAILURE, CHECKUP_RESULT_FIND_REQUEST } from '../types/checkup.result.action.types'
+import { CheckupResultResponse, CheckupResultType } from '../types/checkup.result.data.types'
 import {
   checkupResultsComplete,
   checkupResultsFailure,
@@ -7,10 +12,6 @@ import {
   checkupResultsRequest,
   checkupResultsSelectResult,
 } from '../utils/checkup.result.utils'
-import { CheckupResultResponse, CheckupResultType } from '../types/checkup.result.data.types'
-import { Async, FetchOptions, getEndpoint } from '../../common'
-import { CHECKUP_RESULT_FIND_FAILURE, CHECKUP_RESULT_FIND_REQUEST } from '../types/checkup.result.action.types'
-import { MSG_KEY_CHECKUP_RESULT_FIND_ERROR } from '../../constants'
 
 export const checkupResultFindAction = (username: string, selectedCheckupResultId?: string, isFetchCall?: boolean) => {
   return async (dispatch: React.Dispatch<GlobalDispatch>, getStore: () => GlobalState): Promise<void> => {

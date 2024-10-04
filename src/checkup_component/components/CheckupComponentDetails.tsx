@@ -1,12 +1,13 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow } from '../../styles'
-import { CheckupComponentType, DefaultCheckupComponent } from '../types/checkup.component.data.types'
-import checkupComponentDetails from '../reducers/checkup.component.details.reducer'
-import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
-import { Button, checkupCategoryOptions, HrefLink, Input, InputType, Modal, Select, standardValue } from '../../common'
-import { handleCheckupComponentFieldChange, validateCheckupComponent } from '../utils/checkup.component.utils'
+
 import { CheckupCategoryType } from '../../checkup_category'
+import { Button, checkupCategoryOptions, HrefLink, Input, InputType, Modal, Select, standardValue } from '../../common'
+import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
+import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow } from '../../styles'
+import checkupComponentDetails from '../reducers/checkup.component.details.reducer'
+import { CheckupComponentType, DefaultCheckupComponent } from '../types/checkup.component.data.types'
+import { handleCheckupComponentFieldChange, validateCheckupComponent } from '../utils/checkup.component.utils'
 
 interface CheckupComponentDetailsProps {
   errMsg: string

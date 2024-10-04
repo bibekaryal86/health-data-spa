@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { applyMiddleware, combineReducers, createStore } from 'redux'
-import thunk from 'redux-thunk'
-import reduxImmutableStateInvariant from 'redux-immutable-state-invariant'
 import { composeWithDevTools } from '@redux-devtools/extension'
-import { USER_LOGOUT } from '../types/login.action.types'
-import { alert, AlertState, spinner, SpinnerState } from '../../common'
+import { applyMiddleware, combineReducers, createStore } from 'redux'
+import reduxImmutableStateInvariant from 'redux-immutable-state-invariant'
+import { thunk } from 'redux-thunk'
+
 import { checkupCategory, CheckupCategoryState } from '../../checkup_category'
 import { checkupComponent, CheckupComponentState } from '../../checkup_component'
 import { checkupResult, CheckupResultState } from '../../checkup_result'
+import { alert, AlertState, spinner, SpinnerState } from '../../common'
+import { USER_LOGOUT } from '../types/login.action.types'
 
 // ACTIONS (ESP: FETCH ACTIONS) SHOULD BE NAMED IN THE FOLLOWING PATTERN:
 // xxx_REQUEST, xxx_SUCCESS, xxx_FAILURE, xxx_COMPLETE

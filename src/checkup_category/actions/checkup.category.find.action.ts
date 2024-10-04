@@ -1,15 +1,16 @@
 import React from 'react'
+
 import { GlobalDispatch, GlobalState } from '../../app/store/redux'
+import { Async, getEndpoint } from '../../common'
+import { MSG_KEY_CHECKUP_CATEGORY_FIND_ERROR } from '../../constants'
+import { CHECKUP_CATEGORY_FIND_FAILURE, CHECKUP_CATEGORY_FIND_REQUEST } from '../types/checkup.category.action.types'
+import { CheckupCategoryResponse, CheckupCategoryType } from '../types/checkup.category.data.types'
 import {
   checkupCategoriesComplete,
   checkupCategoriesFailure,
   checkupCategoriesFindSuccess,
   checkupCategoriesRequest,
 } from '../utils/checkup.category.utils'
-import { CheckupCategoryResponse, CheckupCategoryType } from '../types/checkup.category.data.types'
-import { Async, getEndpoint } from '../../common'
-import { CHECKUP_CATEGORY_FIND_FAILURE, CHECKUP_CATEGORY_FIND_REQUEST } from '../types/checkup.category.action.types'
-import { MSG_KEY_CHECKUP_CATEGORY_FIND_ERROR } from '../../constants'
 
 export const checkupCategoryFindAction = (isFetchCall?: boolean) => {
   return async (dispatch: React.Dispatch<GlobalDispatch>, getStore: () => GlobalState): Promise<void> => {

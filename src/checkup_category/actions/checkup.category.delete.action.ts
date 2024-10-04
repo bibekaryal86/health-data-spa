@@ -1,19 +1,20 @@
 import React from 'react'
+
 import { GlobalDispatch } from '../../app/store/redux'
+import { Async, FetchOptions, getEndpoint } from '../../common'
+import { MSG_KEY_CHECKUP_CATEGORY_DELETE_ERROR, MSG_KEY_CHECKUP_CATEGORY_DELETE_SUCCESS } from '../../constants'
+import {
+  CHECKUP_CATEGORY_DELETE_FAILURE,
+  CHECKUP_CATEGORY_DELETE_REQUEST,
+  CHECKUP_CATEGORY_DELETE_SUCCESS,
+} from '../types/checkup.category.action.types'
+import { CheckupCategoryResponse } from '../types/checkup.category.data.types'
 import {
   checkupCategoriesComplete,
   checkupCategoriesFailure,
   checkupCategoriesRequest,
   checkupCategoriesSuccess,
 } from '../utils/checkup.category.utils'
-import { CheckupCategoryResponse } from '../types/checkup.category.data.types'
-import { Async, FetchOptions, getEndpoint } from '../../common'
-import {
-  CHECKUP_CATEGORY_DELETE_FAILURE,
-  CHECKUP_CATEGORY_DELETE_REQUEST,
-  CHECKUP_CATEGORY_DELETE_SUCCESS,
-} from '../types/checkup.category.action.types'
-import { MSG_KEY_CHECKUP_CATEGORY_DELETE_ERROR, MSG_KEY_CHECKUP_CATEGORY_DELETE_SUCCESS } from '../../constants'
 
 export const checkupCategoryDeleteAction = (id: string) => {
   return async (dispatch: React.Dispatch<GlobalDispatch>): Promise<void> => {

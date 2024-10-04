@@ -1,10 +1,4 @@
 import {
-  CheckupComponentAction,
-  CheckupComponentState,
-  DefaultCheckupComponent,
-  DefaultCheckupComponentState,
-} from '../types/checkup.component.data.types'
-import {
   CHECKUP_COMPONENT_DELETE_FAILURE,
   CHECKUP_COMPONENT_DELETE_SUCCESS,
   CHECKUP_COMPONENT_FIND_FAILURE,
@@ -17,6 +11,12 @@ import {
   CHECKUP_COMPONENT_UPDATE_FAILURE,
   CHECKUP_COMPONENT_UPDATE_SUCCESS,
 } from '../types/checkup.component.action.types'
+import {
+  CheckupComponentAction,
+  CheckupComponentState,
+  DefaultCheckupComponent,
+  DefaultCheckupComponentState,
+} from '../types/checkup.component.data.types'
 
 export default function checkupComponent(
   state = DefaultCheckupComponentState,

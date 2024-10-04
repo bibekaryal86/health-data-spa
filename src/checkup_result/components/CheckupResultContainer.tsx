@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
+
+import CheckupResult from './CheckupResult'
 import { GlobalState } from '../../app/store/redux'
-import { resetAlert, setAlert } from '../../common'
 import { checkupCategoryFindAction } from '../../checkup_category'
 import { checkupComponentFindAction } from '../../checkup_component'
+import { resetAlert, setAlert } from '../../common'
+import { checkupResultFindAction } from '../actions/checkup.result.find.action'
 import { CheckupResultState } from '../types/checkup.result.data.types'
 import { checkupResultReset } from '../utils/checkup.result.utils'
-import { checkupResultFindAction } from '../actions/checkup.result.find.action'
-import CheckupResult from './CheckupResult'
 
 const mapStateToProps = ({ checkupCategory, checkupComponent, checkupResult }: GlobalState): CheckupResultState => {
   return {

@@ -1,6 +1,6 @@
 import React from 'react'
+
 import { GlobalDispatch } from '../../app/store/redux'
-import { CheckupCategoryLocalAction, CheckupCategoryType } from '../types/checkup.category.data.types'
 import {
   CHECKUP_CATEGORY_COMPLETE,
   CHECKUP_CATEGORY_FIND_SUCCESS,
@@ -12,6 +12,7 @@ import {
   CHECKUP_CATEGORY_SELECT_CATEGORY,
   CHECKUP_CATEGORY_UNMOUNT,
 } from '../types/checkup.category.action.types'
+import { CheckupCategoryLocalAction, CheckupCategoryType } from '../types/checkup.category.data.types'
 
 export const checkupCategoryReset = () => {
   return async (dispatch: React.Dispatch<GlobalDispatch>): Promise<void> => {

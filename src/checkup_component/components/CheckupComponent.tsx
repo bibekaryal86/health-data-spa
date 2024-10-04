@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+import { CheckupCategoryType } from '../../checkup_category'
+import { checkupCategoryOptions, HrefLink, Select, Table } from '../../common'
+import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
 import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow } from '../../styles'
 import { CheckupComponentType, DefaultCheckupComponentState } from '../types/checkup.component.data.types'
-import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
-import { checkupCategoryOptions, HrefLink, Select, Table } from '../../common'
 import { getCheckupComponentDisplayList } from '../utils/checkup.component.utils'
-import { CheckupCategoryType } from '../../checkup_category'
 
 interface CheckupComponentProps {
   errMsg: string

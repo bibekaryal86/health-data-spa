@@ -1,8 +1,9 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import { AuthContext } from '../../app/context/AuthContext'
-import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow } from '../../styles'
-import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
+import { CheckupCategoryType } from '../../checkup_category'
+import { CheckupComponentType } from '../../checkup_component'
 import {
   checkupCategoryOptions,
   checkupComponentOptions,
@@ -13,6 +14,8 @@ import {
   Select,
   Table,
 } from '../../common'
+import { ALERT_TYPE_FAILURE, ALERT_TYPE_SUCCESS } from '../../constants'
+import { DisplayCardWrapperBody, DisplayCardWrapperColumn, DisplayCardWrapperRow } from '../../styles'
 import {
   CheckupResultType,
   DefaultCheckupResultFilter,
@@ -23,8 +26,6 @@ import {
   isCheckupResultFilterApplied,
   setCheckupResultFiltersValue,
 } from '../utils/checkup.result.utils'
-import { CheckupComponentType } from '../../checkup_component'
-import { CheckupCategoryType } from '../../checkup_category'
 
 interface CheckupResultProps {
   errMsg: string
