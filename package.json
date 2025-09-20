@@ -74,7 +74,7 @@
     "jest-environment-jsdom": "^30.1.2",
     "jest-html-reporter": "^4.3.0",
     "redux-immutable-state-invariant": "^2.1.0",
-    "ts-jest": "^29.4.2",
+    "ts-jest": "^29.4.3",
     "typescript": "^5.9.2",
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1",
