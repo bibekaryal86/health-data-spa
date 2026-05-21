@@ -76,7 +76,7 @@
     "redux-immutable-state-invariant": "^2.1.0",
     "ts-jest": "^29.4.10",
     "typescript": "^6.0.3",
-    "webpack": "^5.106.2",
+    "webpack": "^5.107.0",
     "webpack-cli": "^7.0.2",
     "webpack-dev-server": "^5.2.4"
   }
