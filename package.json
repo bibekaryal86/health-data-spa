@@ -58,7 +58,7 @@
     "babel-loader": "^10.1.1",
     "clean-webpack-plugin": "^4.0.0",
     "dotenv-webpack": "^9.0.0",
-    "eslint": "^9.39.4",
+    "eslint": "^10.5.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import": "^2.32.0",
@@ -78,6 +78,6 @@
     "typescript": "^6.0.3",
     "webpack": "^5.107.2",
     "webpack-cli": "^7.0.3",
-    "webpack-dev-server": "^5.2.4"
+    "webpack-dev-server": "^5.2.5"
   }
 }
