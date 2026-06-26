@@ -13,7 +13,13 @@
     [
       "@babel/plugin-transform-runtime",
       {
-        "regenerator": true
+        "corejs": false
+      }
+    ],
+    [
+      "babel-plugin-polyfill-regenerator",
+      {
+        "method": "usage-pure"
       }
     ],
     [
