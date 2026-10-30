@@ -1,5 +1,5 @@
 # STAGE 1: BUILD #
-FROM node:24-alpine as build
+FROM node:26-alpine as build
 WORKDIR /usr/src/app
 COPY package*.json /usr/src/app/
 RUN npm install --production

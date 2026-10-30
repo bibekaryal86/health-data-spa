@@ -5,7 +5,7 @@
   "private": true,
   "main": "index.js",
   "engines": {
-    "node": "24"
+    "node": "26"
   },
   "engineStrict": true,
   "scripts": {
@@ -36,13 +36,13 @@
     "styled-components": "^6.6.0"
   },
   "devDependencies": {
-    "@babel/core": "^8.0.9",
+    "@babel/core": "^8.0.10",
     "@babel/plugin-transform-react-jsx": "^8.0.1",
     "@babel/plugin-transform-runtime": "^8.0.6",
     "@babel/preset-env": "^8.0.7",
     "@babel/preset-react": "^8.0.1",
     "@babel/preset-typescript": "^8.0.7",
-    "@babel/runtime": "^8.0.8",
+    "@babel/runtime": "^8.0.10",
     "@eslint/compat": "^2.1.1",
     "@eslint/eslintrc": "^3.3.7",
     "@eslint/js": "^9.39.4",
